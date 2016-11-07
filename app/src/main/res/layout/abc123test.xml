@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/unDropped"
+        android:layout_marginBottom="13dp"
+        android:layout_width="100dp"
+        android:id="@+id/@+id/iUn"
+        android:layout_above="@+id/@+id/iUn2"
+        android:layout_alignLeft="@+id/@+id/iUn2"
+        android:layout_alignStart="@+id/@+id/iUn2" />
+
+    <ImageView
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/unDropped"
+        android:layout_width="100dp"
+        android:id="@+id/@+id/iUn2"
+        android:layout_alignTop="@+id/i2"
+        android:layout_alignLeft="@+id/@+id/iUn"
+        android:layout_alignStart="@+id/@+id/iUn" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="60dp"
+        android:id="@+id/i1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/i2"
+        android:layout_below="@+id/i1"
+        android:layout_alignLeft="@+id/i1"
+        android:layout_alignStart="@+id/i1"
+        android:layout_marginTop="55dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/i3"
+        android:layout_below="@+id/i2"
+        android:layout_alignLeft="@+id/i2"
+        android:layout_alignStart="@+id/i2"
+        android:layout_marginTop="55dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/i4"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/i3"
+        android:layout_alignLeft="@+id/i3"
+        android:layout_alignStart="@+id/i3" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/t2"
+        android:layout_above="@+id/i3"
+        android:layout_alignLeft="@+id/t1"
+        android:layout_alignStart="@+id/t1" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/t3"
+        android:layout_above="@+id/i4"
+        android:layout_alignLeft="@+id/t2"
+        android:layout_alignStart="@+id/t2" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/t1"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_above="@+id/i2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/t4"
+        android:layout_alignBottom="@+id/i4"
+        android:layout_alignLeft="@+id/t3"
+        android:layout_alignStart="@+id/t3" />
+
+</RelativeLayout>
