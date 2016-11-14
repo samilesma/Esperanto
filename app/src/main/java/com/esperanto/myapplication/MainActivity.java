@@ -9,10 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import easy.learning.Abc123;
+import easy.testing.Abc123test;
 
 public class MainActivity extends Fragment implements View.OnClickListener {
 
-    private Button bOK;
+    private Button bOK, bTest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -20,8 +21,10 @@ public class MainActivity extends Fragment implements View.OnClickListener {
         View show = inflater.inflate(R.layout.activity_main, container, false);
 
         bOK = (Button) show.findViewById(R.id.bOK);
+        bTest = (Button) show.findViewById(R.id.bTest);
 
         bOK.setOnClickListener(this);
+        bTest.setOnClickListener(this);
 
         return show;
     }
@@ -31,6 +34,10 @@ public class MainActivity extends Fragment implements View.OnClickListener {
         if(v==bOK){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Abc123()).addToBackStack(null).commit();
+        }
+        if(v==bTest){
+            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Abc123test()).addToBackStack(null).commit();
         }
 
     }
