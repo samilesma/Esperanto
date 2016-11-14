@@ -32,14 +32,6 @@ public class Abc123 extends Fragment implements View.OnClickListener {
         ivLearn3 = (ImageView) show.findViewById(R.id.ivLearn3);
         ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
 
-        ivSound1 = (ImageView) show.findViewById(R.id.ivSound1);
-        ivSound2 = (ImageView) show.findViewById(R.id.ivSound2);
-        ivSound3 = (ImageView) show.findViewById(R.id.ivSound3);
-        ivSound4 = (ImageView) show.findViewById(R.id.ivSound4);
-
-
-
-
         return show;
     }
 
