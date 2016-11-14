@@ -75,7 +75,6 @@ public class Abc123test extends Fragment {
     }
     @SuppressLint("NewApi")
     private class ChoiceDragListener implements View.OnDragListener {
-
         @Override
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
