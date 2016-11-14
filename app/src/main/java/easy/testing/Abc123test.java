@@ -30,11 +30,13 @@ public class Abc123test extends Fragment {
         View view = inflater.inflate(R.layout.abc123test, container, false);
 
         i1 = (ImageView) view.findViewById(R.id.i1);
+        i1.setTag("1");
         i2 = (ImageView) view.findViewById(R.id.i2);
         i3 = (ImageView) view.findViewById(R.id.i3);
         i4 = (ImageView) view.findViewById(R.id.i4);
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
+        iUN1.setTag("1");
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);
         iUN3 = (ImageView) view.findViewById(R.id.iUN3);
         iUN4 = (ImageView) view.findViewById(R.id.iUN4);
@@ -95,6 +97,31 @@ public class Abc123test extends Fragment {
                     //view being dragged and dropped
                     ImageView dropped = (ImageView) view;
                     //checking whether first character of dropTarget equals first character of dropped
+                    if(dropTarget.getTag() == dropped.getTag())
+                    {
+                        //stop displaying the view where it was before it was dragged
+                        view.setVisibility(View.INVISIBLE);
+                        //update the text in the target view to reflect the data being dropped
+                       // dropTarget.setText(dropTarget.getText().toString() + dropped.getText().toString());
+                        //make it bold to highlight the fact that an item has been dropped
+                        //dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                        //if an item has already been dropped here, there will be a tag
+                        Object tag = dropTarget.getTag();
+                        //if there is already an item here, set it back visible in its original place
+                        if(tag!=null)
+                        {
+                            //the tag is the view id already dropped here
+                            ((ImageView) v).setImageResource(R.drawable.undropped);
+                        }
+                        //set the tag in the target view being dropped on - to the ID of the view being dropped
+                        dropTarget.setTag(dropped.getId());
+                        //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
+                        dropTarget.setOnDragListener(null);
+                    }
+                    else
+                        //displays message if first character of dropTarget is not equal to first character of dropped
+                        Toast.makeText(getActivity(), "Wrong",
+                                Toast.LENGTH_LONG).show();
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary
