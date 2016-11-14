@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.esperanto.myapplication.MainActivity;
 import com.esperanto.myapplication.R;
@@ -25,6 +26,7 @@ public class dethele extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragmentindhold,fragment).commit();
         }
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
