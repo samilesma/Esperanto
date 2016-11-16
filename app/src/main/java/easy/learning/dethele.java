@@ -1,5 +1,5 @@
 package easy.learning;
-/**
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +9,7 @@ import android.widget.Button;
 import com.esperanto.myapplication.MainActivity;
 import com.esperanto.myapplication.R;
 
-/**
- * Created by IbsenB on 07-11-2016.
- */
-/**
+
 public class dethele extends AppCompatActivity {
 
 
@@ -36,4 +33,3 @@ public class dethele extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-**/
