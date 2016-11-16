@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.esperanto.R;
+import com.esperanto.myapplication.R;
 
 public class Abc123 extends Fragment implements View.OnClickListener {
 
