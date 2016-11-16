@@ -27,16 +27,8 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
-        <FrameLayout
-            android:id="@+id/abc123"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-
-        </FrameLayout>
-
-       <!-- <include layout="@layout/hovedaktivitet_indhold" /> -->
+        <include layout="@layout/hovedaktivitet_indhold" />
 
 
     </android.support.design.widget.CoordinatorLayout>
