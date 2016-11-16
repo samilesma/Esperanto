@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.esperanto.myapplication.MainActivity;
-import com.esperanto.myapplication.R;
+import com.example.esperanto.MainActivity;
+import com.example.esperanto.R;
 
 
 public class dethele extends AppCompatActivity {
