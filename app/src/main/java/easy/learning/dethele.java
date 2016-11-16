@@ -5,9 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Button;
+import com.example.esperanto.R;
 
 import com.example.esperanto.MainActivity;
-import com.example.esperanto.R;
+
 
 
 public class dethele extends AppCompatActivity {
