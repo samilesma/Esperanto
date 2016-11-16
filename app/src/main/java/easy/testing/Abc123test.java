@@ -67,7 +67,7 @@ public class Abc123test extends Fragment {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 //start dragging the item touched
-                view.startDrag(data, shadowBuilder, view, 0);
+              //  view.startDrag(data, shadowBuilder, view, 0);
                 return true;
             } else {
                 return false;
