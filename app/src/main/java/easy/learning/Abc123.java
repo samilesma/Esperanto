@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.esperanto.myapplication.R;
 
 public class Abc123 extends Fragment implements View.OnClickListener {
-
+//Haha
     private TextView tLearn1,tLearn2,tLearn3,tLearn4;
     private ImageView ivLearn1, ivLearn2, ivLearn3,ivLearn4;
     private ImageView ivSound1, ivSound2, ivSound3, ivSound4;
