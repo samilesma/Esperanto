@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.esperanto.myapplication.R;
+import com.example.esperanto.R;
 
 public class Abc123test extends Fragment {
     private ImageView i1,i2,i3,i4,iUN1,iUN2,iUN3,iUN4;
