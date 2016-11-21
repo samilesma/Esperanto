@@ -131,7 +131,6 @@ public class dragAnddrop extends Fragment {
     }
     public void reset(View view)
     {
-// MERGE MERGE MERGE MERGE MERGE MERGE
     }
 
     public void setImages(ImageView i1,ImageView i2,ImageView i3, ImageView i4){
