@@ -37,6 +37,11 @@ public class dragAnddrop extends Fragment {
         iUN3 = (ImageView) view.findViewById(R.id.iUN3);
         iUN4 = (ImageView) view.findViewById(R.id.iUN4);
 
+        t1 = (TextView) view.findViewById(R.id.t1);
+        t2 = (TextView) view.findViewById(R.id.t2);
+        t3 = (TextView) view.findViewById(R.id.t3);
+        t4 = (TextView) view.findViewById(R.id.t4);
+
         i1.setOnTouchListener(new ChoiceTouchListener());
         i2.setOnTouchListener(new ChoiceTouchListener());
         i3.setOnTouchListener(new ChoiceTouchListener());
@@ -132,10 +137,29 @@ public class dragAnddrop extends Fragment {
 // MERGE MERGE MERGE MERGE MERGE MERGE
     }
 
-    public void setImages(int i1,int i2,int i3, int i4){
-        this.i1 = (ImageView) v.findViewById(i1);
-        this.i2 = (ImageView) v.findViewById(i2);
-        this.i3 = (ImageView) v.findViewById(i3);
-        this.i4 = (ImageView) v.findViewById(i4);
+    public void setImages(ImageView i1,ImageView i2,ImageView i3, ImageView i4){
+        this.i1 = i1;
+        this.i2 = i2;
+        this.i3 = i3;
+        this.i4 = i4;
+    }
+
+    public void setText(String t1, String t2, String t3, String t4){
+        this.t1.setText(t1);
+        this.t2.setText(t2);
+        this.t3.setText(t3);
+        this.t4.setText(t4);
+    }
+
+    public void setTags(int i1,int i2,int i3, int i4, int t1, int t2, int t3, int t4){
+        this.i1.setTag(i1);
+        this.i2.setTag(i2);
+        this.i3.setTag(i3);
+        this.i4.setTag(i4);
+
+        this.iUN1.setTag(t1);
+        this.iUN2.setTag(t2);
+        this.iUN3.setTag(t3);
+        this.iUN4.setTag(t4);
     }
 }
