@@ -2,22 +2,27 @@ package com.example.esperanto;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.example.esperanto.R;
+
+import easy.controller;
 import easy.learning.Abc123;
 import easy.testing.dragAnddrop;
 
 public class MainActivity extends Fragment implements View.OnClickListener {
 
     private Button bOK, bTest;
-
+    Controller c;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View show = inflater.inflate(R.layout.activity_main, container, false);
+
+        c = new Controller(getActivity());
 
         bOK = (Button) show.findViewById(R.id.bOK);
         bTest = (Button) show.findViewById(R.id.bTest);

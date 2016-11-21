@@ -23,14 +23,11 @@ import com.example.esperanto.R;
 public class dragAnddrop extends Fragment {
     private ImageView i1,i2,i3,i4,iUN1,iUN2,iUN3,iUN4;
     private TextView t1,t2,t3,t4;
-    private View v;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.abc123test, container, false);
-
-        v= view;
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);
@@ -134,7 +131,6 @@ public class dragAnddrop extends Fragment {
     }
     public void reset(View view)
     {
-// MERGE MERGE MERGE MERGE MERGE MERGE
     }
 
     public void setImages(ImageView i1,ImageView i2,ImageView i3, ImageView i4){
