@@ -9,7 +9,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="110dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -37,7 +37,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="110dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -67,7 +67,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="110dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -93,7 +93,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="110dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -114,7 +114,18 @@
             android:textSize="24sp"
             />
 
-
-
     </LinearLayout>
+
+
+    <Button
+        android:text="Mi pretas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bReady"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#51b46d"
+        android:background="@android:color/background_light"
+        />
+
 </LinearLayout>
