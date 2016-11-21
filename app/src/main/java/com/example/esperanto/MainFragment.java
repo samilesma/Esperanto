@@ -1,5 +1,6 @@
 package com.example.esperanto;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.esperanto.myapplication.Navigation_drawer;
 import com.example.esperanto.R;
 
 import easy.controller;
 import easy.learning.Abc123;
 import easy.testing.dragAnddrop;
 
-public class MainActivity extends Fragment implements View.OnClickListener {
+public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private Button bOK, bTest;
+    private Button bOK, bTest, bNav;
     Controller c;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,9 +29,11 @@ public class MainActivity extends Fragment implements View.OnClickListener {
 
         bOK = (Button) show.findViewById(R.id.bOK);
         bTest = (Button) show.findViewById(R.id.bTest);
+        bNav = (Button) show.findViewById(R.id.bNav);
 
         bOK.setOnClickListener(this);
         bTest.setOnClickListener(this);
+        bNav.setOnClickListener(this);
 
         return show;
     }
@@ -42,6 +47,12 @@ public class MainActivity extends Fragment implements View.OnClickListener {
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new dragAnddrop()).addToBackStack(null).commit();
+        }
+        if(v==bNav){
+            Intent intent = new Intent(getContext(), Navigation_drawer.class);
+            startActivity(intent);
+
+
         }
 
     }
