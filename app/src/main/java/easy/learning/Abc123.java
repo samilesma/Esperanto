@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.esperanto.R;
 
-import easy.testing.Abc123test;
+import easy.testing.dragAnddrop;
 
 
 public class Abc123 extends Fragment implements View.OnClickListener {
@@ -45,7 +45,7 @@ public class Abc123 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v==bReady){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Abc123()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new dragAnddrop()).addToBackStack(null).commit();
 
         }
 

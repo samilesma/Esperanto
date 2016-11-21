@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import com.example.esperanto.R;
 import easy.learning.Abc123;
-import easy.testing.Abc123test;
+import easy.testing.dragAnddrop;
 
 public class MainActivity extends Fragment implements View.OnClickListener {
 
@@ -36,7 +36,7 @@ public class MainActivity extends Fragment implements View.OnClickListener {
         }
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Abc123test()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new dragAnddrop()).addToBackStack(null).commit();
         }
 
     }
