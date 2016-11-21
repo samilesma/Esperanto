@@ -20,24 +20,19 @@ import com.example.esperanto.R;
 
 
 
-public class Abc123test extends Fragment {
+public class dragAnddrop extends Fragment {
     private ImageView i1,i2,i3,i4,iUN1,iUN2,iUN3,iUN4;
     private TextView t1,t2,t3,t4;
-
+    private View v;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.abc123test, container, false);
 
-        i1 = (ImageView) view.findViewById(R.id.i1);
-        i1.setTag("1");
-        i2 = (ImageView) view.findViewById(R.id.i2);
-        i3 = (ImageView) view.findViewById(R.id.i3);
-        i4 = (ImageView) view.findViewById(R.id.i4);
+        v= view;
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
-        iUN1.setTag("1");
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);
         iUN3 = (ImageView) view.findViewById(R.id.iUN3);
         iUN4 = (ImageView) view.findViewById(R.id.iUN4);
@@ -67,7 +62,7 @@ public class Abc123test extends Fragment {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 //start dragging the item touched
-              //  view.startDrag(data, shadowBuilder, view, 0);
+                view.startDrag(data, shadowBuilder, view, 0);
                 return true;
             } else {
                 return false;
@@ -135,5 +130,12 @@ public class Abc123test extends Fragment {
     public void reset(View view)
     {
 // MERGE MERGE MERGE MERGE MERGE MERGE
+    }
+
+    public void setImages(int i1,int i2,int i3, int i4){
+        this.i1 = (ImageView) v.findViewById(i1);
+        this.i2 = (ImageView) v.findViewById(i2);
+        this.i3 = (ImageView) v.findViewById(i3);
+        this.i4 = (ImageView) v.findViewById(i4);
     }
 }
