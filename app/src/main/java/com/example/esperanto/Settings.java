@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
 
-public class Settings extends Fragment implements {
+public class Settings extends Fragment {
     private Switch sSound, sNotification;
     private Button b1;
 
