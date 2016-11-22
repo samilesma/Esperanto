@@ -13,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.example.esperanto.MainFragment;
 import com.example.esperanto.R;
-
 import easy.learning.Abc123;
 
 public class Navigation_drawer extends AppCompatActivity
