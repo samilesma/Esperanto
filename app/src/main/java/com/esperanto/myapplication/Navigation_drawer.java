@@ -3,6 +3,7 @@ package com.esperanto.myapplication;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.esperanto.MainFragment;
 import com.example.esperanto.R;
+
+import easy.learning.Abc123;
 
 public class Navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +40,11 @@ public class Navigation_drawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        if (savedInstanceState == null) {
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.activity_main, new Abc123()).commit();
+        }
 
     }
 
