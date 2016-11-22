@@ -15,6 +15,7 @@ import com.example.esperanto.R;
 import easy.controller;
 import easy.learning.Abc123;
 import easy.testing.dragAnddrop;
+import easy.testing.picture_choose;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
@@ -46,7 +47,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new dragAnddrop()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new picture_choose()).addToBackStack(null).commit();
         }
         if(v==bNav){
             Intent intent = new Intent(getContext(), Navigation_drawer.class);
