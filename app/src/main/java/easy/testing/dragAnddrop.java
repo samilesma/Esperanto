@@ -29,11 +29,6 @@ public class dragAnddrop extends Fragment {
 
         View view = inflater.inflate(R.layout.abc123test, container, false);
 
-        i1 = (ImageView) view.findViewById(R.id.i1);
-        i2 = (ImageView) view.findViewById(R.id.i2);
-        i3 = (ImageView) view.findViewById(R.id.i3);
-        i4 = (ImageView) view.findViewById(R.id.i4);
-
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);
         iUN3 = (ImageView) view.findViewById(R.id.iUN3);
