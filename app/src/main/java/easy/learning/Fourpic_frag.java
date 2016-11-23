@@ -47,6 +47,7 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         tLearn4.setText("Cevalo");
 
         bReady = (Button) show.findViewById(R.id.bReady);
+        bReady.setOnClickListener(this);
 
         return show;
     }
