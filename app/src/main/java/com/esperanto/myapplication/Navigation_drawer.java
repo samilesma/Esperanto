@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.R;
+import com.example.esperanto.Settings_frag;
 
 import easy.learning.Fourpic_frag;
 
@@ -75,6 +76,9 @@ public class Navigation_drawer extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Settings_frag()).addToBackStack(null).commit();
+
 
         }/** else if (id == R.id.nav_manage) {
 
