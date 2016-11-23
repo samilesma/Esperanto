@@ -15,7 +15,7 @@ import easy.testing.Picture_choose_frag;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
-    private Button bOK, bTest, bNav;
+    private Button bOK, bTest;
     Controller c;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,11 +26,9 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
         bOK = (Button) show.findViewById(R.id.bOK);
         bTest = (Button) show.findViewById(R.id.bTest);
-        bNav = (Button) show.findViewById(R.id.bNav);
 
         bOK.setOnClickListener(this);
         bTest.setOnClickListener(this);
-        bNav.setOnClickListener(this);
 
         return show;
     }
@@ -45,12 +43,5 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Picture_choose_frag()).addToBackStack(null).commit();
         }
-        if(v==bNav){
-            Intent intent = new Intent(getContext(), Navigation_drawer.class);
-            startActivity(intent);
-
-
-        }
-
     }
 }
