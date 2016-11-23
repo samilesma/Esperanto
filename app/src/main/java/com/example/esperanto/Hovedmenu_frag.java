@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.esperanto.myapplication.Navigation_drawer;
 
-import easy.learning.Abc123;
+import easy.learning.Fourpic_frag;
 import easy.testing.Picture_choose_frag;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
@@ -39,7 +39,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v==bOK){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Abc123()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
         }
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)

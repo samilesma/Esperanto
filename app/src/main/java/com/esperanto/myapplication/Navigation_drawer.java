@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.R;
 
-import easy.learning.Abc123;
+import easy.learning.Fourpic_frag;
 
 public class Navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,7 +71,7 @@ public class Navigation_drawer extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Abc123()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
