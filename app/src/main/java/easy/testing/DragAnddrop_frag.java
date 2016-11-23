@@ -86,6 +86,10 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        if(v==bReady){
+            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Picture_choose_frag()).addToBackStack(null).commit();
+        }
 
     }
 
