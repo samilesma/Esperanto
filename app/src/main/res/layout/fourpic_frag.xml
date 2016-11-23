@@ -116,7 +116,9 @@
 
     </LinearLayout>
 
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
     <Button
         android:text="Mi pretas"
         android:layout_width="347dp"

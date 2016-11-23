@@ -36,6 +36,16 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         ivLearn3 = (ImageView) show.findViewById(R.id.ivLearn3);
         ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
 
+        ivLearn1.setImageResource(R.drawable.auto1);
+        ivLearn2.setImageResource(R.drawable.banano);
+        ivLearn3.setImageResource(R.drawable.citrono);
+        ivLearn4.setImageResource(R.drawable.cevaloo);
+
+        tLearn1.setText("Auto");
+        tLearn2.setText("Banano");
+        tLearn3.setText("Citron");
+        tLearn4.setText("Cevalo");
+
         bReady = (Button) show.findViewById(R.id.bReady);
 
         return show;
