@@ -12,6 +12,7 @@ import com.esperanto.myapplication.Navigation_drawer;
 
 import easy.learning.Fourpic_frag;
 import easy.testing.Picture_choose_frag;
+import com.example.esperanto.levels;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
@@ -30,6 +31,10 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
         bOK.setOnClickListener(this);
         bTest.setOnClickListener(this);
 
+        //* SKAL FJERNES EFTER SENDELSE AF PROTOTYPE *//*
+        getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(R.id.fragmentindhold, new levels()).addToBackStack(null).commit();
+        //*/
         return show;
     }
 
