@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +18,11 @@ import com.example.esperanto.R;
 
 
 
-public class DragAnddrop_frag extends Fragment {
+public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private ImageView i1,i2,i3,i4,iUN1,iUN2,iUN3,iUN4;
     private TextView t1,t2,t3,t4;
+    private Button bReady;
+    private int correct;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,11 +33,6 @@ public class DragAnddrop_frag extends Fragment {
         i2 = (ImageView) view.findViewById(R.id.i2);
         i3 = (ImageView) view.findViewById(R.id.i3);
         i4 = (ImageView) view.findViewById(R.id.i4);
-
-        i1.setImageResource(R.drawable.cevaloo);
-        i2.setImageResource(R.drawable.auto1);
-        i3.setImageResource(R.drawable.banano);
-        i4.setImageResource(R.drawable.citrono);
 
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
@@ -47,6 +45,13 @@ public class DragAnddrop_frag extends Fragment {
         t3 = (TextView) view.findViewById(R.id.t3);
         t4 = (TextView) view.findViewById(R.id.t4);
 
+        bReady = (Button) view.findViewById(R.id.bReady);
+
+        i1.setImageResource(R.drawable.cevaloo);
+        i2.setImageResource(R.drawable.auto1);
+        i3.setImageResource(R.drawable.banano);
+        i4.setImageResource(R.drawable.citrono);
+
         i1.setOnTouchListener(new ChoiceTouchListener());
         i2.setOnTouchListener(new ChoiceTouchListener());
         i3.setOnTouchListener(new ChoiceTouchListener());
@@ -56,6 +61,11 @@ public class DragAnddrop_frag extends Fragment {
         iUN2.setOnDragListener(new ChoiceDragListener());
         iUN3.setOnDragListener(new ChoiceDragListener());
         iUN4.setOnDragListener(new ChoiceDragListener());
+
+        bReady.setVisibility(View.INVISIBLE);
+        bReady.setOnClickListener(this);
+
+        correct=0;
 
         i1.setTag(1);
         i2.setTag(2);
@@ -73,6 +83,12 @@ public class DragAnddrop_frag extends Fragment {
         t4.setText("Auto");
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @SuppressLint("NewApi")
         @Override
@@ -129,6 +145,7 @@ public class DragAnddrop_frag extends Fragment {
                         //if there is already an item here, set it back visible in its original place
                         if(tag!=null)
                         {
+                            correct++;
                             if(dropped.getTag().toString().equals("1")) ((ImageView) v).setImageResource(R.drawable.cevaloo);
                             if(dropped.getTag().toString().equals("2")) ((ImageView) v).setImageResource(R.drawable.auto1);
                             if(dropped.getTag().toString().equals("3")) ((ImageView) v).setImageResource(R.drawable.banano);
@@ -138,6 +155,8 @@ public class DragAnddrop_frag extends Fragment {
                         dropTarget.setTag(dropped.getId());
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                         dropTarget.setOnDragListener(null);
+
+                        if(correct==4) bReady.setVisibility(View.VISIBLE);
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped
