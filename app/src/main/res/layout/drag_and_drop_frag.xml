@@ -27,7 +27,7 @@
         <ImageView
             app:srcCompat="@drawable/undropped"
             android:id="@+id/iUN1"
-            android:layout_weight="1.19"
+            android:layout_weight="1"
             android:layout_height="100dp"
             android:layout_width="120dp"
             android:layout_gravity="center_vertical" />
