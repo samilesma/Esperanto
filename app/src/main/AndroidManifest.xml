@@ -8,7 +8,9 @@
         android:label="Esperanto"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="easy.learning.dethele">
+        <activity
+            android:name="com.esperanto.myapplication.Navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -33,11 +35,13 @@
                     android:scheme="http"/>
             </intent-filter>
         </activity>
-        <activity
+
+<!--        <activity
             android:name="com.esperanto.myapplication.Navigation_drawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        -->
     </application>
 
 </manifest>
