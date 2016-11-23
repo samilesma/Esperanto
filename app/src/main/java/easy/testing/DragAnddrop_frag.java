@@ -26,6 +26,17 @@ public class DragAnddrop_frag extends Fragment {
 
         View view = inflater.inflate(R.layout.drag_and_drop_frag, container, false);
 
+        i1 = (ImageView) view.findViewById(R.id.i1);
+        i2 = (ImageView) view.findViewById(R.id.i2);
+        i3 = (ImageView) view.findViewById(R.id.i3);
+        i4 = (ImageView) view.findViewById(R.id.i4);
+
+        i1.setImageResource(R.drawable.cevaloo);
+        i2.setImageResource(R.drawable.auto1);
+        i3.setImageResource(R.drawable.banano);
+        i4.setImageResource(R.drawable.citrono);
+
+
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);
         iUN3 = (ImageView) view.findViewById(R.id.iUN3);
@@ -46,6 +57,20 @@ public class DragAnddrop_frag extends Fragment {
         iUN3.setOnDragListener(new ChoiceDragListener());
         iUN4.setOnDragListener(new ChoiceDragListener());
 
+        i1.setTag(1);
+        i2.setTag(2);
+        i3.setTag(3);
+        i4.setTag(4);
+
+        iUN1.setTag(3);
+        iUN2.setTag(4);
+        iUN3.setTag(1);
+        iUN4.setTag(2);
+
+        t1.setText("Banano");
+        t2.setText("Citrono");
+        t3.setText("Cevalo");
+        t4.setText("Auto");
         return view;
     }
     private final class ChoiceTouchListener implements View.OnTouchListener {
@@ -104,8 +129,10 @@ public class DragAnddrop_frag extends Fragment {
                         //if there is already an item here, set it back visible in its original place
                         if(tag!=null)
                         {
-                            //the tag is the view id already dropped here
-                            ((ImageView) v).setImageResource(R.drawable.undropped);
+                            if(dropped.getTag().toString().equals("1")) ((ImageView) v).setImageResource(R.drawable.cevaloo);
+                            if(dropped.getTag().toString().equals("2")) ((ImageView) v).setImageResource(R.drawable.auto1);
+                            if(dropped.getTag().toString().equals("3")) ((ImageView) v).setImageResource(R.drawable.banano);
+                            if(dropped.getTag().toString().equals("4")) ((ImageView) v).setImageResource(R.drawable.citrono);
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setTag(dropped.getId());
