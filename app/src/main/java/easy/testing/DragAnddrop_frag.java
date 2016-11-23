@@ -3,13 +3,10 @@ package easy.testing;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
-import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +17,14 @@ import com.example.esperanto.R;
 
 
 
-public class dragAnddrop extends Fragment {
+public class DragAnddrop_frag extends Fragment {
     private ImageView i1,i2,i3,i4,iUN1,iUN2,iUN3,iUN4;
     private TextView t1,t2,t3,t4;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.abc123test, container, false);
+        View view = inflater.inflate(R.layout.drag_and_drop_frag, container, false);
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);

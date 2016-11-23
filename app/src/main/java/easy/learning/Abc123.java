@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.esperanto.R;
 
-import easy.testing.dragAnddrop;
+import easy.testing.DragAnddrop_frag;
 
 
 public class Abc123 extends Fragment implements View.OnClickListener {
@@ -24,7 +24,7 @@ public class Abc123 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View show = inflater.inflate(R.layout.abc123, container, false);
+        View show = inflater.inflate(R.layout.abc123_frag, container, false);
 
         tLearn1 = (TextView) show.findViewById(R.id.tLearn1);
         tLearn2 = (TextView) show.findViewById(R.id.tLearn2);
@@ -45,7 +45,7 @@ public class Abc123 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v==bReady){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new dragAnddrop()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new DragAnddrop_frag()).addToBackStack(null).commit();
 
         }
 

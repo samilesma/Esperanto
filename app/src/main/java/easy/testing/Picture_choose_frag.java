@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.esperanto.R;
 
 
-public class picture_choose extends Fragment implements View.OnClickListener {
+public class Picture_choose_frag extends Fragment implements View.OnClickListener {
 
     private ImageView iPicture1, iPicture2, iPicture3, iPicture4;
     private TextView tElekti;
@@ -21,7 +21,7 @@ public class picture_choose extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.picture_choose, container, false);
+        View view = inflater.inflate(R.layout.picture_choose_frag, container, false);
 
         iPicture1 = (ImageView) view.findViewById(R.id.iPicture1);
         iPicture2 = (ImageView) view.findViewById(R.id.iPicture2);

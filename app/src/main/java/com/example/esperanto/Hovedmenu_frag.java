@@ -3,28 +3,24 @@ package com.example.esperanto;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.esperanto.myapplication.Navigation_drawer;
-import com.example.esperanto.R;
 
-import easy.controller;
 import easy.learning.Abc123;
-import easy.testing.dragAnddrop;
-import easy.testing.picture_choose;
+import easy.testing.Picture_choose_frag;
 
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
     private Button bOK, bTest, bNav;
     Controller c;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View show = inflater.inflate(R.layout.activity_main, container, false);
+        View show = inflater.inflate(R.layout.hovedmenu_frag, container, false);
 
         c = new Controller(getActivity());
 
@@ -47,7 +43,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new picture_choose()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Picture_choose_frag()).addToBackStack(null).commit();
         }
         if(v==bNav){
             Intent intent = new Intent(getContext(), Navigation_drawer.class);

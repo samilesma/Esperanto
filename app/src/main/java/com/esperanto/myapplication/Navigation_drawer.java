@@ -9,8 +9,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import com.example.esperanto.MainFragment;
+import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.R;
+
 import easy.learning.Abc123;
 
 public class Navigation_drawer extends AppCompatActivity
@@ -43,7 +44,7 @@ public class Navigation_drawer extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragmentindhold, new Abc123()).commit();
 */
-            Fragment fragment = new MainFragment();
+            Fragment fragment = new Hovedmenu_frag();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, fragment).commit();
         }
@@ -69,6 +70,8 @@ public class Navigation_drawer extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Abc123()).addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
