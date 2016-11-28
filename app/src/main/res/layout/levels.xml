@@ -12,13 +12,14 @@
             android:text="Beginner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/beginner"
+            android:id="@+id/tBeginner"
             android:gravity="center"
             android:textSize="30dp"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="220px">
+            android:layout_height="220px"
+            android:id="@+id/beginner_scrollview">
 
         </HorizontalScrollView>
 
@@ -30,7 +31,7 @@
             android:text="Intermediate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/intermediate"
+            android:id="@+id/tIntermediate"
             android:gravity="center"
             android:textSize="30dp"/>
 
@@ -48,7 +49,7 @@
             android:text="Expert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/expert"
+            android:id="@+id/tExpert"
             android:gravity="center"
             android:textSize="30dp"/>
 
