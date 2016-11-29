@@ -4,9 +4,9 @@ package levels.intermediate;
  * Created by ahmad on 14-11-2016.
  */
 
-public class hard_controller {
+public class intermediate_controller {
 
-    public hard_controller(){
+    public intermediate_controller(){
 
     }
 }
