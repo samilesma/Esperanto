@@ -29,7 +29,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
         //* SKAL FJERNES EFTER SENDELSE AF PROTOTYPE *//*
         getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(R.id.fragmentindhold, new Levels()).addToBackStack(null).commit();
+                .replace(R.id.fragmentindhold, new Levels_frag()).addToBackStack(null).commit();
         //*/
         return show;
     }

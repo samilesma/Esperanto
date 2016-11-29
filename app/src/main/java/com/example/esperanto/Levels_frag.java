@@ -11,7 +11,7 @@ import android.widget.TextView;
  * Created by ahmad on 23-11-2016.
  */
 
-public class Levels extends Fragment {
+public class Levels_frag extends Fragment {
     private TextView tBeginner, tIntermediate, tExpert;
 
     @Override
