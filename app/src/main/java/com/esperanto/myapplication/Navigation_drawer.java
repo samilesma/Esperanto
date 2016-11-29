@@ -10,11 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.example.esperanto.Hovedmenu_frag;
-import com.example.esperanto.levels;
+import com.example.esperanto.Levels;
 import com.example.esperanto.R;
 import com.example.esperanto.Settings_frag;
 
-import easy.learning.Fourpic_frag;
+import levels.beginner.learning.Fourpic_frag;
 
 public class Navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -76,7 +76,7 @@ public class Navigation_drawer extends AppCompatActivity
                     .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new levels()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Levels()).addToBackStack(null).commit();
 
 
         } else if (id == R.id.nav_slideshow) {

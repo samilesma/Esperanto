@@ -1,6 +1,5 @@
 package com.example.esperanto;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.esperanto.myapplication.Navigation_drawer;
-
-import easy.learning.Fourpic_frag;
-import easy.testing.Picture_choose_frag;
-import com.example.esperanto.levels;
+import levels.beginner.learning.Fourpic_frag;
+import levels.beginner.testing.Picture_choose_frag;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
@@ -33,7 +29,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 
         //* SKAL FJERNES EFTER SENDELSE AF PROTOTYPE *//*
         getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(R.id.fragmentindhold, new levels()).addToBackStack(null).commit();
+                .replace(R.id.fragmentindhold, new Levels()).addToBackStack(null).commit();
         //*/
         return show;
     }
