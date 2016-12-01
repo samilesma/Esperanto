@@ -27,7 +27,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
         bOK.setOnClickListener(this);
         bTest.setOnClickListener(this);
 
-        
+
         return show;
     }
 
