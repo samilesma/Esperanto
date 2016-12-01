@@ -41,9 +41,10 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         ivLearn3.setImageResource(R.drawable.citrono);
         ivLearn4.setImageResource(R.drawable.cevaloo);
 
+
         tLearn1.setText("Auto");
         tLearn2.setText("Banano");
-        tLearn3.setText("Citron");
+        tLearn3.setText("Citrono");
         tLearn4.setText("Cevalo");
 
         bReady = (Button) show.findViewById(R.id.bReady);

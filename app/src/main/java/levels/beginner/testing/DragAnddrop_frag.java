@@ -141,7 +141,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                         //stop displaying the view where it was before it was dragged
                         view.setVisibility(View.INVISIBLE);
                         //update the text in the target view to reflect the data being dropped
-                       // dropTarget.setText(dropTarget.getText().toString() + dropped.getText().toString());
+                        // dropTarget.setText(dropTarget.getText().toString() + dropped.getText().toString());
                         //make it bold to highlight the fact that an item has been dropped
                         //dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
                         //if an item has already been dropped here, there will be a tag
