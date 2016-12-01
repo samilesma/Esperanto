@@ -29,10 +29,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         iPicture4 = (ImageView) view.findViewById(R.id.iPicture4);
         tElekti = (TextView) view.findViewById(R.id.tElekti);
 
-        iPicture1.setImageResource(R.drawable.auto1);
-        iPicture2.setImageResource(R.drawable.banano);
-        iPicture3.setImageResource(R.drawable.citrono);
-        iPicture4.setImageResource(R.drawable.cevaloo);
+        iPicture1.setImageResource(R.mipmap.auto1);
+        iPicture2.setImageResource(R.mipmap.banano);
+        iPicture3.setImageResource(R.mipmap.citrono);
+        iPicture4.setImageResource(R.mipmap.cevaloo);
 
 
         iPicture1.setOnClickListener(this);

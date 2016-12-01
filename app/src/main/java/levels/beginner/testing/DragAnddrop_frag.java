@@ -47,10 +47,10 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
         bReady = (Button) view.findViewById(R.id.bReady);
 
-        i1.setImageResource(R.drawable.cevaloo);
-        i2.setImageResource(R.drawable.auto1);
-        i3.setImageResource(R.drawable.banano);
-        i4.setImageResource(R.drawable.citrono);
+        i1.setImageResource(R.mipmap.cevaloo);
+        i2.setImageResource(R.mipmap.auto1);
+        i3.setImageResource(R.mipmap.banano);
+        i4.setImageResource(R.mipmap.citrono);
 
         i1.setOnTouchListener(new ChoiceTouchListener());
         i2.setOnTouchListener(new ChoiceTouchListener());
@@ -150,10 +150,10 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                         if(tag!=null)
                         {
                             correct++;
-                            if(dropped.getTag().toString().equals("1")) ((ImageView) v).setImageResource(R.drawable.cevaloo);
-                            if(dropped.getTag().toString().equals("2")) ((ImageView) v).setImageResource(R.drawable.auto1);
-                            if(dropped.getTag().toString().equals("3")) ((ImageView) v).setImageResource(R.drawable.banano);
-                            if(dropped.getTag().toString().equals("4")) ((ImageView) v).setImageResource(R.drawable.citrono);
+                            if(dropped.getTag().toString().equals("1")) ((ImageView) v).setImageResource(R.mipmap.cevaloo);
+                            if(dropped.getTag().toString().equals("2")) ((ImageView) v).setImageResource(R.mipmap.auto1);
+                            if(dropped.getTag().toString().equals("3")) ((ImageView) v).setImageResource(R.mipmap.banano);
+                            if(dropped.getTag().toString().equals("4")) ((ImageView) v).setImageResource(R.mipmap.citrono);
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setTag(dropped.getId());
