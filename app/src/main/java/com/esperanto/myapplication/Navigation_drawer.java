@@ -14,7 +14,7 @@ import com.example.esperanto.Levels_frag;
 import com.example.esperanto.R;
 import com.example.esperanto.Settings_frag;
 
-import levels.beginner.learning.Fourpic_frag;
+import gamemodes.Fourpic_frag;
 
 public class Navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

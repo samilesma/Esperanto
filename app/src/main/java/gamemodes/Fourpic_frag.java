@@ -1,4 +1,4 @@
-package levels.beginner.learning;
+package gamemodes;
 
 
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.esperanto.R;
-
-import levels.beginner.testing.DragAnddrop_frag;
 
 
 public class Fourpic_frag extends Fragment implements View.OnClickListener {

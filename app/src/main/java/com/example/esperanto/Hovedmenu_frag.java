@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import levels.beginner.learning.Fourpic_frag;
-import levels.beginner.testing.Picture_choose_frag;
+import gamemodes.Fourpic_frag;
+import gamemodes.Picture_choose_frag;
 
 public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
 

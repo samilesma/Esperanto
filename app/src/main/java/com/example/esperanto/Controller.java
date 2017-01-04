@@ -3,6 +3,7 @@ package com.example.esperanto;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 
 import java.io.BufferedReader;
@@ -11,6 +12,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Controller {
     SharedPreferences level;
@@ -25,6 +29,49 @@ public class Controller {
     public void setNiveau(int level, int underLevel){
         this.level.edit().putInt("level", level).apply();
         this.level.edit().putInt("underLevel", underLevel).apply();
+    }
+
+    private String web(int type, int difficulty, int num) {
+        String url="http://quickconnect.dk/";
+
+        if(type==1) url=url+"images/";
+        else url=url+"sounds/";
+
+        if(difficulty==1) url=url+"beginner/";
+        else if(difficulty==2) url=url+"intermediate/";
+        else url=url+"expert/";
+
+        if(type==1) url=url+num+".jpg";
+        else url=url+num+".mp3";
+
+        URL oracle = null;
+        try {
+            oracle = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(
+                    new InputStreamReader(oracle.openStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String inputLine;
+        String output="";
+        try {
+            while ((inputLine = in.readLine()) != null)
+                    output=output+inputLine+"\n";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 
     public static String getUrl(String url) throws IOException {
