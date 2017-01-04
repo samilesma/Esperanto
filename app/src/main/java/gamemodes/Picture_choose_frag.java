@@ -23,7 +23,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private MediaPlayer mPlayer;
     private int[] images = {R.id.iPicture1, R.id.iPicture2, R.id.iPicture3, R.id.iPicture4};
     private int[] sounds = {R.raw.sound1, R.raw.sound2, R.raw.sound3, R.raw.sound4};
-    private Random random;
+    private Random random = new Random();
     int soundPlay;
 
 
@@ -54,7 +54,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         iPicture3.setTag(3);
         iPicture4.setTag(4);
 
-        playSound();
+        soundPlay=random.nextInt(4);
+        System.out.println(soundPlay);
+        playSound(soundPlay);
+
 
 
         return view;
@@ -64,6 +67,8 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if(v==iPicture1){
             System.out.println("Der trykkes på billede 1");
+
+
         }
         if(v==iPicture2) {
             System.out.println("Der trykkes på billede 2");
@@ -77,8 +82,8 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
     }
 
-    public void playSound(){
-        mPlayer = MediaPlayer.create(getContext(), random.nextInt(4));
+    public void playSound(int sound){
+        mPlayer = MediaPlayer.create(this.getContext(), sounds[sound]);
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mPlayer.start();
     }
