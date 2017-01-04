@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import java.io.BufferedReader;
@@ -15,6 +16,8 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import gamemodes.DescribeImage_frag;
 
 public class Controller {
     SharedPreferences level;
@@ -99,6 +102,21 @@ public class Controller {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static DescribeImage_frag newInstance(int image1, String t1, String t2, String t3, String t4, String tTarget) {
+        DescribeImage_frag f = new DescribeImage_frag();
+        // Supply index input as an argument.
+        Bundle args = new Bundle();
+        args.putInt("image", R.drawable.domo);
+        args.putString("Text1","Plomo");
+        args.putString("Text2","Auto");
+        args.putString("Text3","Domo");
+        args.putString("Text4","Cevalo");
+        args.putString("Text5","Plata");
+        args.putString("tTarget","Domo");
+        f.setArguments(args);
+        return f;
     }
 
 }
