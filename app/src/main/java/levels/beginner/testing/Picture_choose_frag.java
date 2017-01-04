@@ -1,6 +1,8 @@
 package levels.beginner.testing;
 
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
     private ImageView iPicture1, iPicture2, iPicture3, iPicture4;
     private TextView tElekti;
+    private MediaPlayer mPlayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,11 +37,19 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         iPicture3.setImageResource(R.mipmap.citrono);
         iPicture4.setImageResource(R.mipmap.cevaloo);
 
-
         iPicture1.setOnClickListener(this);
         iPicture2.setOnClickListener(this);
         iPicture3.setOnClickListener(this);
         iPicture4.setOnClickListener(this);
+
+        iPicture1.setTag(1);
+        iPicture2.setTag(2);
+        iPicture3.setTag(3);
+        iPicture4.setTag(4);
+
+        mPlayer = MediaPlayer.create(getContext(), R.raw.cevalo);
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mPlayer.start();
 
         return view;
     }
@@ -47,6 +58,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if(v==iPicture1){
             System.out.println("Der trykkes på billede 1");
+            mPlayer.start();
         }
         if(v==iPicture2) {
             System.out.println("Der trykkes på billede 2");
