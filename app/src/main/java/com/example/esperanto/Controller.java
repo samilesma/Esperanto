@@ -1,17 +1,14 @@
 package com.example.esperanto;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
-
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,10 +17,12 @@ public class Controller {
     SharedPreferences level;
 
     public Controller(FragmentActivity activity) {
+        /*
         level = activity.getSharedPreferences(
                 "level", Context.MODE_PRIVATE);
         level = activity.getSharedPreferences(
                 "underLevel", Context.MODE_PRIVATE);
+                */
     }
 
     public void setNiveau(int level, int underLevel){
@@ -31,7 +30,18 @@ public class Controller {
         this.level.edit().putInt("underLevel", underLevel).apply();
     }
 
-    private String web(int type, int difficulty, int num) {
+    public String web(String url) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
+        StringBuilder sb = new StringBuilder();
+        String linje = br.readLine();
+        while (linje != null) {
+            sb.append(linje + "\n");
+            linje = br.readLine();
+        }
+        return sb.toString();
+    }
+
+    private String media(int type, int difficulty, int num) {
         String url="http://quickconnect.dk/";
 
         if(type==1) url=url+"images/";
