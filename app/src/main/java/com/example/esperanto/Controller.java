@@ -72,7 +72,7 @@ public class Controller {
         String output="";
         try {
             while ((inputLine = in.readLine()) != null)
-                    output=output+inputLine+"\n";
+                output=output+inputLine+"\n";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,19 +111,6 @@ public class Controller {
         }
     }
 
-    public static DescribeImage_frag newInstance(int image1, String t1, String t2, String t3, String t4, String tTarget) {
-        DescribeImage_frag f = new DescribeImage_frag();
-        // Supply index input as an argument.
-        Bundle args = new Bundle();
-        args.putInt("image", R.drawable.domo);
-        args.putString("Text1","Plomo");
-        args.putString("Text2","Auto");
-        args.putString("Text3","Domo");
-        args.putString("Text4","Cevalo");
-        args.putString("Text5","Plata");
-        args.putString("tTarget","Domo");
-        f.setArguments(args);
-        return f;
-    }
+
 
 }

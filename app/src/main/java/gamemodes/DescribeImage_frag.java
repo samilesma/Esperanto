@@ -16,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Controller;
 import com.example.esperanto.R;
 
 
 public class DescribeImage_frag extends Fragment {
 
+    Controller c;
     TextView t1,t2,t3,t4,t5,t6,t7,t8,tTarget;
     ImageView i1;
 
@@ -29,6 +31,8 @@ public class DescribeImage_frag extends Fragment {
                              Bundle savedInstanceState) {
         View show = inflater.inflate(R.layout.describe_image_frag, container, false);
         Bundle args = getArguments();
+        c.newInstance()
+
 
         t1 = (TextView) show.findViewById(R.id.tText1);
         t2 = (TextView) show.findViewById(R.id.tText2);
@@ -148,5 +152,20 @@ public class DescribeImage_frag extends Fragment {
             }
             return true;
         }
+    }
+
+    public DescribeImage_frag newInstance(int image1, String t1, String t2, String t3, String t4, String tTarget) {
+        DescribeImage_frag f = new DescribeImage_frag();
+        // Supply index input as an argument.
+        Bundle args = new Bundle();
+        args.putInt("image", R.drawable.domo);
+        args.putString("Text1","Plomo");
+        args.putString("Text2","Auto");
+        args.putString("Text3","Domo");
+        args.putString("Text4","Cevalo");
+        args.putString("Text5","Plata");
+        args.putString("tTarget","Domo");
+        f.setArguments(args);
+        return f;
     }
 }
