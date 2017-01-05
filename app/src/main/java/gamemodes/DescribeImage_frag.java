@@ -29,22 +29,21 @@ public class DescribeImage_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View show = inflater.inflate(R.layout.describe_image_frag, container, false);
+        View view = inflater.inflate(R.layout.describe_image_frag, container, false);
         Bundle args = getArguments();
-        c.newInstance()
 
 
-        t1 = (TextView) show.findViewById(R.id.tText1);
-        t2 = (TextView) show.findViewById(R.id.tText2);
-        t3 = (TextView) show.findViewById(R.id.tText3);
-        t4 = (TextView) show.findViewById(R.id.tText4);
-        t5 = (TextView) show.findViewById(R.id.tText5);
-        t6 = (TextView) show.findViewById(R.id.tText6);
-        t7 = (TextView) show.findViewById(R.id.tText7);
-        t8 = (TextView) show.findViewById(R.id.tText8);
-        tTarget = (TextView) show.findViewById(R.id.tTarget);
+        t1 = (TextView) view.findViewById(R.id.tText1);
+        t2 = (TextView) view.findViewById(R.id.tText2);
+        t3 = (TextView) view.findViewById(R.id.tText3);
+        t4 = (TextView) view.findViewById(R.id.tText4);
+        t5 = (TextView) view.findViewById(R.id.tText5);
+        t6 = (TextView) view.findViewById(R.id.tText6);
+        t7 = (TextView) view.findViewById(R.id.tText7);
+        t8 = (TextView) view.findViewById(R.id.tText8);
+        tTarget = (TextView) view.findViewById(R.id.tTarget);
         tTarget.setTag("Citrono");
-        i1 = (ImageView) show.findViewById(R.id.iDescribe);
+        i1 = (ImageView) view.findViewById(R.id.iDescribe);
 
         //t1.setText(args.getString("Text1"));
         //t2.setText(args.getString("Text2"));
@@ -73,7 +72,7 @@ public class DescribeImage_frag extends Fragment {
 
         tTarget.setOnDragListener(new ChoiceDragListener());
 
-        return show;
+        return view;
     }
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @SuppressLint("NewApi")
