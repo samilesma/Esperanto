@@ -164,7 +164,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped
-                        Toast.makeText(getActivity(), "Wrong",
+                        Toast.makeText(getActivity(), "Malgûsta",
                                 Toast.LENGTH_LONG).show();
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
