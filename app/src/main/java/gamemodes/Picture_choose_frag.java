@@ -88,7 +88,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
         if(v==bReady){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Levels_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new DescribeImage_frag()).addToBackStack(null).commit();
         }
 
     }

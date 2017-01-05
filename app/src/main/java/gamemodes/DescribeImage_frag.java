@@ -141,7 +141,7 @@ public class DescribeImage_frag extends Fragment {
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped
-                        Toast.makeText(getActivity(), "Wrong",
+                        Toast.makeText(getActivity(), "Malgûsta",
                                 Toast.LENGTH_LONG).show();                    break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary
