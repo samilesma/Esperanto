@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.esperanto.R;
-import com.example.esperanto.Levels_frag;
+
 
 
 import java.util.Random;
@@ -78,6 +78,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if((v==iPicture1 && soundPlay==0) || (v==iPicture2 && soundPlay==1) || (v==iPicture3 && soundPlay==2)
                 || (v==iPicture4 && soundPlay==3 )){
+            tElekti.setText("Yaaaaaayyyyy!!!!");
             bReady.setVisibility(View.VISIBLE);
         }
 
