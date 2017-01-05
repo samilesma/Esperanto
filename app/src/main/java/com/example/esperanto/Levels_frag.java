@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -19,9 +21,16 @@ public class Levels_frag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Web json=new Web("http://quickconnect.dk/esperanto/metadata.json",getActivity());
+        View view =  inflater.inflate(R.layout.levels, container, false);
+        LinearLayout yourLayout = (LinearLayout) view.findViewById(R.id.beginner_linear);
 
+        TextView tv = new TextView(getActivity().getApplicationContext());
+        tv.setText("aklsdkasldjsaldkjskljskaj");
+        yourLayout.addView(tv);
+
+        Web json=new Web("http://quickconnect.dk/esperanto/metadata.json",getActivity());
         System.out.println(json.data);
+
         View show = inflater.inflate(R.layout.levels, container, false);
         return show;
     }
