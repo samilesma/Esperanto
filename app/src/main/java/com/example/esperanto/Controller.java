@@ -15,7 +15,7 @@ public class Controller {
     public SharedPreferences level;
     public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag()};
     public static String levelType=null;
-    public static int currentLevel=0;
+    public static int currentLevel=0;\
     public static int levelLength=0;
     public static JSONObject json=null;
 
