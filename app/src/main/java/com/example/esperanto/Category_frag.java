@@ -28,8 +28,7 @@ public class Category_frag extends Fragment implements View.OnClickListener{
         iIntermediate.setOnClickListener(this);
         iExpert.setOnClickListener(this);
 
-        getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(R.id.fragmentindhold, new Category_frag()).addToBackStack(null).commit();
+
 
 
 
