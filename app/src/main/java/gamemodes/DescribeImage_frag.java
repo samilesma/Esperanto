@@ -57,8 +57,6 @@ public class DescribeImage_frag extends Fragment {
         t4.setText("Domo");
         t5.setText("Citrono");
         t6.setText("Auto");
-        t7.setText("Samilo");
-        t8.setText("Uno auto");
         i1.setImageResource(R.mipmap.citrono);
 
         t1.setOnTouchListener(new ChoiceTouchListener());
