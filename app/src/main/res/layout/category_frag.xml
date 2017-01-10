@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@android:color/background_light"
-            app:srcCompat="@mipmap/Beginner"
+            app:srcCompat="@mipmap/beginner"
             android:id="@+id/iBeginner"
             android:layout_weight="0.26"/>
 
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@android:color/background_light"
-            app:srcCompat="@mipmap/Intermediate"
+            app:srcCompat="@mipmap/intermediate"
             android:id="@+id/iIntermediate"
             android:layout_weight="0.26"/>
 
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@android:color/background_light"
-            app:srcCompat="@mipmap/Expert"
+            app:srcCompat="@mipmap/expert"
             android:id="@+id/iExpert"
             android:layout_weight="0.26"/>
     </LinearLayout>

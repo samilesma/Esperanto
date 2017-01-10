@@ -23,7 +23,7 @@ import com.example.esperanto.R;
 public class DescribeImage_frag extends Fragment {
 
     Controller c;
-    TextView t1,t2,t3,t4,t5,t6,t7,t8,tTarget;
+    TextView t1,t2,t3,t4,t5,t6,tTarget;
     ImageView i1;
 
     @Override
@@ -39,8 +39,6 @@ public class DescribeImage_frag extends Fragment {
         t4 = (TextView) view.findViewById(R.id.tText4);
         t5 = (TextView) view.findViewById(R.id.tText5);
         t6 = (TextView) view.findViewById(R.id.tText6);
-        t7 = (TextView) view.findViewById(R.id.tText7);
-        t8 = (TextView) view.findViewById(R.id.tText8);
         tTarget = (TextView) view.findViewById(R.id.tTarget);
         tTarget.setTag("Citrono");
         i1 = (ImageView) view.findViewById(R.id.iDescribe);
@@ -65,8 +63,6 @@ public class DescribeImage_frag extends Fragment {
         t4.setOnTouchListener(new ChoiceTouchListener());
         t5.setOnTouchListener(new ChoiceTouchListener());
         t6.setOnTouchListener(new ChoiceTouchListener());
-        t7.setOnTouchListener(new ChoiceTouchListener());
-        t8.setOnTouchListener(new ChoiceTouchListener());
 
         tTarget.setOnDragListener(new ChoiceDragListener());
 

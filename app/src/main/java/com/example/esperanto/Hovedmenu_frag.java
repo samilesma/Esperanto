@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import gamemodes.DescribeImage_frag;
 import gamemodes.Fourpic_frag;
 import gamemodes.Picture_choose_frag;
 
@@ -33,7 +34,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v==bOK){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new DescribeImage_frag()).addToBackStack(null).commit();
         }
         if(v==bTest){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
