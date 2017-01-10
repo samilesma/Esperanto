@@ -18,7 +18,7 @@ public class Category_frag extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.levels, container, false);
+        View view =  inflater.inflate(R.layout.category_frag, container, false);
 
         iBeginner = (ImageButton) view.findViewById(R.id.iBeginner);
         iIntermediate = (ImageButton) view.findViewById(R.id.iIntermediate);
@@ -27,9 +27,6 @@ public class Category_frag extends Fragment implements View.OnClickListener{
         iBeginner.setOnClickListener(this);
         iIntermediate.setOnClickListener(this);
         iExpert.setOnClickListener(this);
-
-
-
 
 
         return view;
