@@ -12,5 +12,38 @@
         android:weightSum="1">
 
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@android:color/background_light"
+            app:srcCompat="@mipmap/Beginner"
+            android:id="@+id/iBeginner"
+            android:layout_weight="0.26"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@android:color/background_light"
+            app:srcCompat="@mipmap/Intermediate"
+            android:id="@+id/iIntermediate"
+            android:layout_weight="0.26"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@android:color/background_light"
+            app:srcCompat="@mipmap/Expert"
+            android:id="@+id/iExpert"
+            android:layout_weight="0.26"/>
     </LinearLayout>
 </RelativeLayout>

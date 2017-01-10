@@ -24,8 +24,7 @@ public class Hovedmenu_frag extends Fragment implements View.OnClickListener {
         bOK.setOnClickListener(this);
         bTest.setOnClickListener(this);
 
-        getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(R.id.fragmentindhold, new Levels_frag()).addToBackStack(null).commit();
+
 
         return show;
     }
