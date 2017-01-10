@@ -7,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 import gamemodes.Fourpic_frag;
 
-/**
- * Created by IbsenB on 10-01-2017.
- */
 
 public class Category_frag extends Fragment implements View.OnClickListener{
     private ImageButton iBeginner,iIntermediate, iExpert;
+    private Controller c=new Controller(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,19 +36,25 @@ public class Category_frag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(v==iBeginner){
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
+        String level="";
+        if(v==iBeginner) level="beginner";
+        else if(v==iIntermediate) level = "intermediate";
+        else if(v==iExpert) level="expert";
 
+        try {
+            c.selectLevel(level,1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        if(v==iIntermediate){
+        try {
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
-        }
-        if(v==iExpert){
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
-
+                    .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
     }
