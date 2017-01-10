@@ -16,12 +16,8 @@ import java.util.concurrent.ExecutionException;
 
 import gamemodes.Picture_choose_frag;
 
-/**
- * Created by ahmad on 23-11-2016.
- */
 
 public class Levels_frag extends Fragment {
-    private TextView tBeginner, tIntermediate, tExpert;
     private Controller c=new Controller(getActivity());
     private int beginner,intermediate,expert;
     LinearLayout ll;
