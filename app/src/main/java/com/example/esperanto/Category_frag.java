@@ -36,7 +36,8 @@ public class Category_frag extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if(v==iBeginner){
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Fourpic_frag(),"Four_pic").addToBackStack(null).commit();
+
 
         }
         if(v==iIntermediate){

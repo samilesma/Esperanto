@@ -1,5 +1,8 @@
 package com.esperanto.myapplication;
 
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
@@ -8,6 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.Levels_frag;
@@ -95,5 +100,17 @@ public class Navigation_drawer extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // Before 2.0
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Fragment page = getSupportFragmentManager().findFragmentByTag("Four_pic");
+
+        if (keyCode == KeyEvent.KEYCODE_BACK && page.isVisible()) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
