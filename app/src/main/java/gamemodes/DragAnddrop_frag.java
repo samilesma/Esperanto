@@ -90,7 +90,6 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Picture_choose_frag()).addToBackStack(null).commit();
         }
-
     }
 
     private final class ChoiceTouchListener implements View.OnTouchListener {

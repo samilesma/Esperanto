@@ -3,7 +3,6 @@ package com.example.esperanto;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,25 +16,6 @@ import java.net.URL;
  */
 
 public class Web extends AsyncTask<String, String, String> {
-    ProgressDialog pd;
-    String data;
-    String url;
-    FragmentActivity activity;
-
-    public Web(String url, FragmentActivity activity) {
-        this.url=url;
-        this.activity=activity;
-        execute(url);
-    }
-
-    protected void onPreExecute() {
-        super.onPreExecute();
-
-        pd = new ProgressDialog(activity);
-        pd.setMessage("");
-        pd.setCancelable(false);
-        pd.show();
-    }
 
     protected String doInBackground(String... params) {
         HttpURLConnection connection = null;
@@ -46,22 +26,18 @@ public class Web extends AsyncTask<String, String, String> {
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
 
-
             InputStream stream = connection.getInputStream();
 
             reader = new BufferedReader(new InputStreamReader(stream));
 
             StringBuffer buffer = new StringBuffer();
-            String line = "";
+            String line="",text="";
 
             while ((line = reader.readLine()) != null) {
                 buffer.append(line+"\n");
-                Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-
+                text=text+line+"\n";
             }
-
-            return buffer.toString();
-
+            return text;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -80,14 +56,5 @@ public class Web extends AsyncTask<String, String, String> {
             }
         }
         return null;
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        if (pd.isShowing()){
-            pd.dismiss();
-        }
-        data=result;
     }
 }

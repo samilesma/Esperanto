@@ -1,20 +1,23 @@
 package com.example.esperanto;
 
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.concurrent.ExecutionException;
 import gamemodes.DescribeImage_frag;
+import gamemodes.DragAnddrop_frag;
+import gamemodes.Fourpic_frag;
+import gamemodes.Picture_choose_frag;
 
 public class Controller {
-    SharedPreferences level;
+    public SharedPreferences level;
+    public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag()};
+    public static String levelType=null;
+    public static int currentLevel=0;
+    public static int levelLength=0;
+    public static JSONObject json=null;
 
     public Controller(FragmentActivity activity) {
         /*
@@ -30,87 +33,19 @@ public class Controller {
         this.level.edit().putInt("underLevel", underLevel).apply();
     }
 
-    public String web(String url) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
-        StringBuilder sb = new StringBuilder();
-        String linje = br.readLine();
-        while (linje != null) {
-            sb.append(linje + "\n");
-            linje = br.readLine();
-        }
-        return sb.toString();
+    public void selectLevel(String type, int lvl) throws JSONException, ExecutionException, InterruptedException {
+        String data=new Web().execute("http://quickconnect.dk/esperanto/levels/"+type+"/"+lvl+"/index.json").get();
+        System.out.println(data);
+        JSONObject json=new JSONObject(data);
+
+        levelType=type;
+        this.json=json;
     }
 
-    private String media(int type, int difficulty, int num) {
-        String url="http://quickconnect.dk/";
+    public Object getNextLevel() throws JSONException {
+        JSONArray gm=json.getJSONArray("gm");
+        JSONObject lvl=gm.getJSONObject(levelLength++);
 
-        if(type==1) url=url+"images/";
-        else url=url+"sounds/";
-
-        if(difficulty==1) url=url+"beginner/";
-        else if(difficulty==2) url=url+"intermediate/";
-        else url=url+"expert/";
-
-        if(type==1) url=url+num+".jpg";
-        else url=url+num+".mp3";
-
-        URL oracle = null;
-        try {
-            oracle = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(
-                    new InputStreamReader(oracle.openStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String inputLine;
-        String output="";
-        try {
-            while ((inputLine = in.readLine()) != null)
-                output=output+inputLine+"\n";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return output;
+        return GM[lvl.getInt("type")-1];
     }
-
-    public static String getUrl(String url) throws IOException {
-        URL quickconnect = new URL(url);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(
-                        quickconnect.openStream()));
-
-        String full="";
-        String inputLine;
-
-        while ((inputLine = in.readLine()) != null) full=full+"\n"+inputLine;
-
-        in.close();
-
-        return full;
-
-    }
-
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream inputstream = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(inputstream, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-
-
 }
