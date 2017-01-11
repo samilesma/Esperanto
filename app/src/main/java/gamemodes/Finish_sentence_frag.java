@@ -22,9 +22,12 @@ import com.example.esperanto.R;
 
 public class Finish_sentence_frag extends Fragment {
 
-    Controller c;
-    TextView t1,t2,t3,t4,t5,t6,tTarget;
-    ImageView i1;
+
+
+        Controller c;
+        TextView t1, t2, t3, t4, t5, t6, tTarget;
+        ImageView i1;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +43,9 @@ public class Finish_sentence_frag extends Fragment {
         t5 = (TextView) view.findViewById(R.id.tText5);
         t6 = (TextView) view.findViewById(R.id.tText6);
         tTarget = (TextView) view.findViewById(R.id.tTarget);
-        tTarget.setTag("Citrono  ");
+
+       // Twoletters.class.getMethods();
+        tTarget.setTag("Citrono" + "Plato");
         tTarget.setText("This is");
 
         i1 = (ImageView) view.findViewById(R.id.iDescribe);
@@ -132,7 +137,7 @@ public class Finish_sentence_frag extends Fragment {
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setText(dropTarget.getText() + " " + dropped.getText());
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
-                        dropTarget.setOnDragListener(null);
+                     //   dropTarget.setOnDragListener(null);
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped
@@ -162,4 +167,12 @@ public class Finish_sentence_frag extends Fragment {
         f.setArguments(args);
         return f;
     }
+    public class Twoletters {
+
+
+        public Twoletters(TextView t2, TextView t5) {
+
+        }
+    }
+
 }
