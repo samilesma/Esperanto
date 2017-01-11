@@ -17,11 +17,13 @@ import org.json.JSONException;
 
 public class Fourpic_frag extends Fragment implements View.OnClickListener {
 
-    private TextView tLearn1,tLearn2,tLearn3,tLearn4;
-    private ImageView ivLearn1, ivLearn2, ivLearn3,ivLearn4;
+    private TextView text;
+    private ImageView image;
+    private int texts[]={R.id.tLearn1,R.id.tLearn2,R.id.tLearn3,R.id.tLearn4};
+    private int images[]={R.id.ivLearn1,R.id.ivLearn2,R.id.ivLearn3,R.id.ivLearn4};
     private ImageView ivSound1, ivSound2, ivSound3, ivSound4;
     private Button bReady;
-    private Controller c;
+    private Controller c=new Controller(getActivity());
     private String levelType;
     private int currentLevel;
 
@@ -29,40 +31,28 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View show = inflater.inflate(R.layout.fourpic_frag, container, false);
-
-        tLearn1 = (TextView) show.findViewById(R.id.tLearn1);
-        tLearn2 = (TextView) show.findViewById(R.id.tLearn2);
-        tLearn3 = (TextView) show.findViewById(R.id.tLearn3);
-        tLearn4 = (TextView) show.findViewById(R.id.tLearn4);
-
-        ivLearn1 = (ImageView) show.findViewById(R.id.ivLearn1);
-        ivLearn2 = (ImageView) show.findViewById(R.id.ivLearn2);
-        ivLearn3 = (ImageView) show.findViewById(R.id.ivLearn3);
-        ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
-
         levelType = c.levelType;
         currentLevel = c.currentLevel;
-
-        new Image(ivLearn1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/1.png");
-        new Image(ivLearn2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/2.png");
-        new Image(ivLearn3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/3.png");
-        new Image(ivLearn4).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/4.png");
-
+        JSONArray Jimages=null;
         try {
-            JSONArray images=c.json.getJSONArray("images");
-
-            tLearn1.setText(images.getString(0));
-            tLearn2.setText(images.getString(1));
-            tLearn3.setText(images.getString(2));
-            tLearn4.setText(images.getString(3));
+            Jimages=c.json.getJSONArray("images");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        for(int i=1;i<=4;i++){
+            text = (TextView) show.findViewById(texts[i-1]);
+            image = (ImageView) show.findViewById(images[i-1]);
+            new Image(image).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+i+".png");
+            try {
+                text.setText(Jimages.getString(i-1));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         bReady = (Button) show.findViewById(R.id.bReady);
         bReady.setOnClickListener(this);
-
-
         return show;
     }
 

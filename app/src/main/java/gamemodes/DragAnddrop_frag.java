@@ -23,6 +23,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private TextView t1,t2,t3,t4;
     private Button bReady;
     private int correct;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +34,6 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
         i2 = (ImageView) view.findViewById(R.id.i2);
         i3 = (ImageView) view.findViewById(R.id.i3);
         i4 = (ImageView) view.findViewById(R.id.i4);
-
 
         iUN1 = (ImageView) view.findViewById(R.id.iUN1);
         iUN2 = (ImageView) view.findViewById(R.id.iUN2);

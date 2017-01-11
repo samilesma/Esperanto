@@ -46,8 +46,7 @@ public class Controller {
 
     public Object getNextLevel() throws JSONException {
         JSONArray gm=json.getJSONArray("gm");
-        JSONObject lvl=gm.getJSONObject(levelLength);
-        levelLength++;
+        JSONObject lvl=gm.getJSONObject(levelLength++);
 
         return GM[lvl.getInt("type")-1];
     }
