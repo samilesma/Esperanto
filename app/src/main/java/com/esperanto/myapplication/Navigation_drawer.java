@@ -93,18 +93,13 @@ public class Navigation_drawer extends AppCompatActivity
 
 
         }
-         else if (id == R.id.nav_slideshow1) {
-        getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                .replace(R.id.fragmentindhold, new Finish_sentence_frag()).addToBackStack(null).commit();
+        /** else if (id == R.id.nav_manage) {
 
+         }/** else if (id == R.id.nav_share) {
 
-    }/** else if (id == R.id.nav_manage) {
+         } else if (id == R.id.nav_send) {
 
-        }/** else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }**/
+         }**/
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -115,9 +110,14 @@ public class Navigation_drawer extends AppCompatActivity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Fragment last = getSupportFragmentManager().findFragmentByTag("last");
-        if(Controller.levelLength>0) Controller.levelLength--;
+
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if(last.isVisible()) moveTaskToBack(true);
+            if (getFragmentManager().getBackStackEntryCount() > 0) {
+                getFragmentManager().popBackStack();
+            } else {
+                super.onBackPressed();
+            }
             return true;
         }
         return super.onKeyDown(keyCode, event);

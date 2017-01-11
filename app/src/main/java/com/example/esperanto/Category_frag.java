@@ -45,7 +45,7 @@ public class Category_frag extends Fragment implements View.OnClickListener{
         try {
             c.selectLevel(type,1);
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel(), "last").addToBackStack(null).commit();
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
