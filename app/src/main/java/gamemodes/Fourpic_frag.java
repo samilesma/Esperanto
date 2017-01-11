@@ -41,9 +41,8 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
 
         levelType = c.levelType;
-        System.out.println(levelType);
         currentLevel = c.currentLevel;
-        System.out.println(currentLevel);
+
         new Image(ivLearn1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/1.png");
         new Image(ivLearn2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/2.png");
         new Image(ivLearn3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/3.png");
@@ -70,8 +69,12 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v==bReady){
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new DragAnddrop_frag()).addToBackStack(null).commit();
+            try {
+                getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                        .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
