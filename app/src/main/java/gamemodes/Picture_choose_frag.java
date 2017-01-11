@@ -14,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Controller;
 import com.example.esperanto.R;
 
 
-
+import java.net.URL;
 import java.util.Random;
 
 
@@ -30,7 +31,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private int[] images = {R.id.iPicture1, R.id.iPicture2, R.id.iPicture3, R.id.iPicture4};
     private int[] sounds = {R.raw.sound1, R.raw.sound2, R.raw.sound3, R.raw.sound4};
     private Random random = new Random();
-    int soundPlay;
+    private int soundPlay;
+    private Controller c;
+    private String levelType;
+    private int level;
 
 
     @Override
@@ -53,6 +57,13 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         iPicture2.setImageResource(R.mipmap.banano);
         iPicture3.setImageResource(R.mipmap.citrono);
         iPicture4.setImageResource(R.mipmap.cevaloo);
+
+        levelType = c.levelType;
+        level = c.currentLevel;
+
+        URL url = new URL("http://image10.bizrate-images.com/resize?sq=60&uid=2216744464");
+        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        imageView.setImageBitmap(bmp);
 
         bReady = (Button) view.findViewById(R.id.bReady);
 

@@ -84,6 +84,7 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         bReady = (Button) show.findViewById(R.id.bReady);
         bReady.setOnClickListener(this);
 
+
         return show;
     }
 
