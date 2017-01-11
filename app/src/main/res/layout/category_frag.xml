@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
+    android:background="@android:color/background_light"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -14,33 +15,23 @@
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="100dp"
             android:background="@android:color/background_light"
             app:srcCompat="@mipmap/beginner"
             android:id="@+id/iBeginner"
             android:layout_weight="0.26"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.10"/>
-
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="100dp"
             android:background="@android:color/background_light"
             app:srcCompat="@mipmap/intermediate"
             android:id="@+id/iIntermediate"
             android:layout_weight="0.26"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.10"/>
-
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="100dp"
             android:background="@android:color/background_light"
             app:srcCompat="@mipmap/expert"
             android:id="@+id/iExpert"
