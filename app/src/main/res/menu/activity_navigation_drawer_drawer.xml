@@ -14,6 +14,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/settings"
             android:title="Agordoj"/>
+        <item
+            android:id="@+id/nav_slideshow1"
+            android:icon="@drawable/settings"
+            android:title="test"/>
     </group>
        <!-- <item
             android:id="@+id/nav_manage"

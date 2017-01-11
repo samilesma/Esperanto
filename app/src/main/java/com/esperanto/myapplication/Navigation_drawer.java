@@ -19,6 +19,7 @@ import com.example.esperanto.Levels_frag;
 import com.example.esperanto.R;
 import com.example.esperanto.Settings_frag;
 
+import gamemodes.Finish_sentence_frag;
 import gamemodes.Fourpic_frag;
 
 public class Navigation_drawer extends AppCompatActivity
@@ -89,7 +90,13 @@ public class Navigation_drawer extends AppCompatActivity
                     .replace(R.id.fragmentindhold, new Settings_frag()).addToBackStack(null).commit();
 
 
-        }/** else if (id == R.id.nav_manage) {
+        }
+         else if (id == R.id.nav_slideshow1) {
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                .replace(R.id.fragmentindhold, new Finish_sentence_frag()).addToBackStack(null).commit();
+
+
+    }/** else if (id == R.id.nav_manage) {
 
         }/** else if (id == R.id.nav_share) {
 
