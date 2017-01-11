@@ -50,7 +50,12 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         ivLearn3 = (ImageView) show.findViewById(R.id.ivLearn3);
         ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
 
+        ivLearn1.setImageResource(R.mipmap.auto1);
+        ivLearn2.setImageResource(R.mipmap.banano);
+        ivLearn3.setImageResource(R.mipmap.citrono);
+        ivLearn4.setImageResource(R.mipmap.cevaloo);
 
+        /*
         levelType = c.levelType;
         System.out.println(levelType);
         currentLevel = c.currentLevel;
@@ -69,6 +74,7 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
         ivLearn1.setImageBitmap(bmp);
+        */
 
         tLearn1.setText("Auto");
         tLearn2.setText("Banano");
