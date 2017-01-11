@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
@@ -69,13 +70,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         new Image(iPicture3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/3.png");
         new Image(iPicture4).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/4.png");
 
-        try {
-            JSONArray images=c.json.getJSONArray("images");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        soundPlay=random.nextInt(4)+1;
+        System.out.println(soundPlay);
+        new Audio("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/"+soundPlay+".mp3");
 
-        new Audio("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/"+2+".mp3");
 
 
         bReady = (Button) view.findViewById(R.id.bReady);
@@ -88,21 +86,15 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         bReady.setOnClickListener(this);
         bReady.setVisibility(View.INVISIBLE);
 
-
-        //soundPlay=random.nextInt(4);
-        //System.out.println(soundPlay);
-        //playSound(soundPlay);
-
-
-
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if((v==iPicture1 && soundPlay==0) || (v==iPicture2 && soundPlay==1) || (v==iPicture3 && soundPlay==2)
-                || (v==iPicture4 && soundPlay==3 )){
+        if((v==iPicture1 && soundPlay==1) || (v==iPicture2 && soundPlay==2) || (v==iPicture3 && soundPlay==3)
+                || (v==iPicture4 && soundPlay==4 )){
             tElekti.setText("Yaaaaaayyyyy!!!!");
+            tElekti.setTextColor(Color.GREEN);
             bReady.setVisibility(View.VISIBLE);
         }
 
@@ -117,11 +109,4 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         }
 
     }
-
-    public void playSound(int sound){
-        mPlayer = MediaPlayer.create(this.getContext(), sounds[sound]);
-        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mPlayer.start();
-    }
-
 }
