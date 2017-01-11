@@ -1,8 +1,5 @@
 package gamemodes;
 
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,17 +8,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.esperanto.Controller;
+import com.example.esperanto.Image;
 import com.example.esperanto.R;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import static android.R.attr.type;
-import static com.example.esperanto.R.id.imageView;
-
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class Fourpic_frag extends Fragment implements View.OnClickListener {
 
@@ -38,48 +30,35 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View show = inflater.inflate(R.layout.fourpic_frag, container, false);
 
-
         tLearn1 = (TextView) show.findViewById(R.id.tLearn1);
         tLearn2 = (TextView) show.findViewById(R.id.tLearn2);
         tLearn3 = (TextView) show.findViewById(R.id.tLearn3);
         tLearn4 = (TextView) show.findViewById(R.id.tLearn4);
-
 
         ivLearn1 = (ImageView) show.findViewById(R.id.ivLearn1);
         ivLearn2 = (ImageView) show.findViewById(R.id.ivLearn2);
         ivLearn3 = (ImageView) show.findViewById(R.id.ivLearn3);
         ivLearn4 = (ImageView) show.findViewById(R.id.ivLearn4);
 
-        ivLearn1.setImageResource(R.mipmap.auto1);
-        ivLearn2.setImageResource(R.mipmap.banano);
-        ivLearn3.setImageResource(R.mipmap.citrono);
-        ivLearn4.setImageResource(R.mipmap.cevaloo);
-
-        /*
         levelType = c.levelType;
         System.out.println(levelType);
         currentLevel = c.currentLevel;
         System.out.println(currentLevel);
+        new Image(ivLearn1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/1.png");
+        new Image(ivLearn2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/2.png");
+        new Image(ivLearn3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/3.png");
+        new Image(ivLearn4).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/4.png");
 
-        URL url = null;
         try {
-            url = new URL("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/1.jpg");
-        } catch (MalformedURLException e) {
+            JSONArray images=c.json.getJSONArray("images");
+
+            tLearn1.setText(images.getString(0));
+            tLearn2.setText(images.getString(1));
+            tLearn3.setText(images.getString(2));
+            tLearn4.setText(images.getString(3));
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-        Bitmap bmp = null;
-        try {
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ivLearn1.setImageBitmap(bmp);
-        */
-
-        tLearn1.setText("Auto");
-        tLearn2.setText("Banano");
-        tLearn3.setText("Citrono");
-        tLearn4.setText("Cevalo");
 
         bReady = (Button) show.findViewById(R.id.bReady);
         bReady.setOnClickListener(this);

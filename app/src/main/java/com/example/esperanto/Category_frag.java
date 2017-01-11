@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 import gamemodes.Fourpic_frag;
 
 /**
@@ -15,6 +19,7 @@ import gamemodes.Fourpic_frag;
 
 public class Category_frag extends Fragment implements View.OnClickListener{
     private ImageButton iBeginner,iIntermediate, iExpert;
+    Controller c=new Controller(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,22 +39,22 @@ public class Category_frag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(v==iBeginner){
+        String type="";
+        if(v==iBeginner) type="beginner";
+        if(v==iIntermediate) type="intermediate";
+        if(v==iExpert) type="expert";
+
+        try {
+            c.selectLevel(type,1);
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag(),"Four_pic").addToBackStack(null).commit();
-
-
+                    .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        if(v==iIntermediate){
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
-        }
-        if(v==iExpert){
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
-
-        }
-
     }
 
 }

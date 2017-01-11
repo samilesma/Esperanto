@@ -12,6 +12,7 @@ import gamemodes.Fourpic_frag;
 import gamemodes.Picture_choose_frag;
 
 public class Controller {
+
     public SharedPreferences level;
     public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag()};
     public static String levelType=null;

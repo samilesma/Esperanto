@@ -8,14 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.concurrent.ExecutionException;
-
-import gamemodes.Picture_choose_frag;
-
 
 public class Levels_frag extends Fragment {
     private Controller c=new Controller(getActivity());
