@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+
+import com.example.esperanto.Controller;
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.Levels_frag;
 import com.example.esperanto.R;
@@ -79,15 +81,15 @@ public class Navigation_drawer extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Fourpic_frag(), "last").addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Levels_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Levels_frag(), "last").addToBackStack(null).commit();
 
 
         } else if (id == R.id.nav_slideshow) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Settings_frag()).addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Settings_frag(), "last").addToBackStack(null).commit();
 
 
         }
@@ -112,10 +114,10 @@ public class Navigation_drawer extends AppCompatActivity
     // Before 2.0
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Fragment page = getSupportFragmentManager().findFragmentByTag("Four_pic");
-
-        if (keyCode == KeyEvent.KEYCODE_BACK && page.isVisible()) {
-            moveTaskToBack(true);
+        Fragment last = getSupportFragmentManager().findFragmentByTag("last");
+        if(Controller.levelLength>0) Controller.levelLength--;
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if(last.isVisible()) moveTaskToBack(true);
             return true;
         }
         return super.onKeyDown(keyCode, event);
