@@ -1,6 +1,8 @@
 package gamemodes;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.MediaPlayer;
@@ -18,8 +20,12 @@ import com.example.esperanto.Controller;
 import com.example.esperanto.R;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
+
+import static com.example.esperanto.R.id.imageView;
 
 
 public class Picture_choose_frag extends Fragment implements View.OnClickListener {
@@ -57,13 +63,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         iPicture2.setImageResource(R.mipmap.banano);
         iPicture3.setImageResource(R.mipmap.citrono);
         iPicture4.setImageResource(R.mipmap.cevaloo);
-
-        levelType = c.levelType;
-        level = c.currentLevel;
-
-        URL url = new URL("http://image10.bizrate-images.com/resize?sq=60&uid=2216744464");
-        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        imageView.setImageBitmap(bmp);
+        
 
         bReady = (Button) view.findViewById(R.id.bReady);
 
