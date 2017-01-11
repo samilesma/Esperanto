@@ -4,7 +4,6 @@ package gamemodes;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -16,16 +15,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Audio;
 import com.example.esperanto.Controller;
+import com.example.esperanto.Image;
 import com.example.esperanto.R;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.util.Random;
 
-import static com.example.esperanto.R.id.imageView;
+
 
 
 public class Picture_choose_frag extends Fragment implements View.OnClickListener {
@@ -41,6 +42,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private Controller c;
     private String levelType;
     private int level;
+
 
 
     @Override
@@ -59,11 +61,22 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
         tElekti = (TextView) view.findViewById(R.id.tElekti);
 
-        iPicture1.setImageResource(R.mipmap.auto1);
-        iPicture2.setImageResource(R.mipmap.banano);
-        iPicture3.setImageResource(R.mipmap.citrono);
-        iPicture4.setImageResource(R.mipmap.cevaloo);
-        
+        levelType = c.levelType;
+        level = c.currentLevel;
+
+        new Image(iPicture1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/1.png");
+        new Image(iPicture2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/2.png");
+        new Image(iPicture3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/3.png");
+        new Image(iPicture4).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/4.png");
+
+        try {
+            JSONArray images=c.json.getJSONArray("images");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new Audio("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/"+2+".mp3");
+
 
         bReady = (Button) view.findViewById(R.id.bReady);
 
@@ -76,9 +89,9 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         bReady.setVisibility(View.INVISIBLE);
 
 
-        soundPlay=random.nextInt(4);
-        System.out.println(soundPlay);
-        playSound(soundPlay);
+        //soundPlay=random.nextInt(4);
+        //System.out.println(soundPlay);
+        //playSound(soundPlay);
 
 
 

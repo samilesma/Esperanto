@@ -13,9 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import gamemodes.Fourpic_frag;
 
-/**
- * Created by IbsenB on 10-01-2017.
- */
+
 
 public class Category_frag extends Fragment implements View.OnClickListener{
     private ImageButton iBeginner,iIntermediate, iExpert;
