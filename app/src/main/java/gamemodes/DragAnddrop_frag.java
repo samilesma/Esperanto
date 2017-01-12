@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.DragEvent;
@@ -15,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.esperanto.R;
-
+import com.github.jinatonic.confetti.CommonConfetti;
 
 
 public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
@@ -23,12 +24,15 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private TextView t1,t2,t3,t4;
     private Button bReady;
     private int correct;
+    public ViewGroup container;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.drag_and_drop_frag, container, false);
+
+        this.container=container;
 
         i1 = (ImageView) view.findViewById(R.id.i1);
         i2 = (ImageView) view.findViewById(R.id.i2);
@@ -114,6 +118,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     }
     @SuppressLint("NewApi")
     private class ChoiceDragListener implements View.OnDragListener {
+
+
         @Override
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
@@ -159,7 +165,14 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                         dropTarget.setOnDragListener(null);
 
-                        if(correct==4) bReady.setVisibility(View.VISIBLE);
+
+                        if(correct==4) {
+                            bReady.setVisibility(View.VISIBLE);
+                            CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                                    .stream(5000l);
+                        }
+
+
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped

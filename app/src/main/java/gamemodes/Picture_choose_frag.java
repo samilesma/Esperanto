@@ -8,9 +8,11 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentContainer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,8 +22,8 @@ import com.example.esperanto.Audio;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
 import com.example.esperanto.R;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.github.jinatonic.confetti.CommonConfetti;
+
 
 
 
@@ -43,7 +45,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private Controller c;
     private String levelType;
     private int level;
-
+    private ViewGroup container;
 
 
     @Override
@@ -52,7 +54,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
         View view = inflater.inflate(R.layout.picture_choose_frag, container, false);
 
-
+        this.container = container;
 
 
         iPicture1 = (ImageView) view.findViewById(R.id.iPicture1);
@@ -96,6 +98,8 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
             tElekti.setText("Yaaaaaayyyyy!!!!");
             tElekti.setTextColor(Color.GREEN);
             bReady.setVisibility(View.VISIBLE);
+            CommonConfetti.rainingConfetti(this.container ,new int[] { Color.GREEN,Color.BLUE })
+                    .stream(5000l);
         }
 
         else{
@@ -104,6 +108,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         }
 
         if(v==bReady){
+
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new DescribeImage_frag()).addToBackStack(null).commit();
         }
