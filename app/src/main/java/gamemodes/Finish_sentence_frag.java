@@ -87,7 +87,6 @@ public class Finish_sentence_frag extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return view;
     }
     private final class ChoiceTouchListener implements View.OnTouchListener {
@@ -150,7 +149,7 @@ public class Finish_sentence_frag extends Fragment {
 
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
-                        dropTarget.setText(dropped.getText());
+                        dropTarget.setText(dropTarget.getText() + " " + dropped.getText());
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                      //   dropTarget.setOnDragListener(null);
                     }
