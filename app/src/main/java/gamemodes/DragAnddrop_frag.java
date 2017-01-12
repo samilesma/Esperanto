@@ -46,6 +46,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
         currentLevel = c.currentLevel;
         rand=c.RandomizeArray(rand);
 
+        for(int i=1;i<=4;i++) System.out.println(rand[i-1]+" ");
+
         JSONArray Jimages=null;
         try {
             Jimages=c.json.getJSONArray("images");
@@ -60,8 +62,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
             new Image(imageDrag).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
             imageDrag.setOnTouchListener(new ChoiceTouchListener());
             imageDrop.setOnDragListener(new ChoiceDragListener());
-            imageDrag.setTag(i);
-            imageDrop.setTag(rand[i-1]);
+            imageDrag.setTag(rand[i-1]);
+            imageDrop.setTag(i);
             try {
                 text.setText(Jimages.getString(i-1));
             } catch (JSONException e) {

@@ -44,7 +44,6 @@ public class Finish_sentence_frag extends Fragment {
         t6 = (TextView) view.findViewById(R.id.tText6);
         tTarget = (TextView) view.findViewById(R.id.tTarget);
 
-4
         tTarget.setTag("Citrono" + "Plato" + "O");
         tTarget.setText("This is");
 
