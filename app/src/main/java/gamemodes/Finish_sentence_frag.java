@@ -25,14 +25,14 @@ public class Finish_sentence_frag extends Fragment {
 
 
         Controller c;
-        TextView t1, t2, t3, t4, t5, t6, tTarget;
-        ImageView i1;
+        TextView t1, t2, t3, t4, t5, t6, tTarget1, tTarget2, tTarget3, tTarget4;
+        ImageView i1,i2;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.describe_image_frag, container, false);
+        View view = inflater.inflate(R.layout.finish_the_setence_frag, container, false);
         Bundle args = getArguments();
 
 
@@ -42,13 +42,30 @@ public class Finish_sentence_frag extends Fragment {
         t4 = (TextView) view.findViewById(R.id.tText4);
         t5 = (TextView) view.findViewById(R.id.tText5);
         t6 = (TextView) view.findViewById(R.id.tText6);
-        tTarget = (TextView) view.findViewById(R.id.tTarget);
 
-4
-        tTarget.setTag("Citrono" + "Plato" + "O");
-        tTarget.setText("This is");
+        tTarget1 = (TextView) view.findViewById(R.id.tTarget1);
+        tTarget2 = (TextView) view.findViewById(R.id.tTarget2);
+        tTarget3 = (TextView) view.findViewById(R.id.tTarget3);
+        tTarget4 = (TextView) view.findViewById(R.id.tTarget4);
 
-        i1 = (ImageView) view.findViewById(R.id.iDescribe);
+
+        // Twoletters.class.getMethods();
+        tTarget1.setTag("Uno");
+        tTarget2.setTag("Auto");
+        tTarget3.setTag("Dos");
+        tTarget4.setTag("Banano");
+
+        i1 = (ImageView) view.findViewById(R.id.iDescribe1);
+        i2 = (ImageView) view.findViewById(R.id.iDescribe2);
+
+
+
+        t1.setText("Auto");
+        t2.setText("Cevalo");
+        t3.setText("Dos");
+        t4.setText("Uno");
+        t5.setText("Banano");
+        t6.setText("Citrono");
 
         //t1.setText(args.getString("Text1"));
         //t2.setText(args.getString("Text2"));
@@ -56,12 +73,6 @@ public class Finish_sentence_frag extends Fragment {
         //t4.setText(args.getString("Text4"));
         //t5.setText(args.getString("Text5"));
 
-        t1.setText("Plato");
-        t2.setText("O");
-        t3.setText("Plomo");
-        t4.setText("Domo");
-        t5.setText("Citrono");
-        t6.setText("Auto");
         i1.setImageResource(R.mipmap.citrono);
 
         t1.setOnTouchListener(new ChoiceTouchListener());
@@ -71,7 +82,10 @@ public class Finish_sentence_frag extends Fragment {
         t5.setOnTouchListener(new ChoiceTouchListener());
         t6.setOnTouchListener(new ChoiceTouchListener());
 
-        tTarget.setOnDragListener(new ChoiceDragListener());
+        tTarget1.setOnDragListener(new ChoiceDragListener());
+        tTarget2.setOnDragListener(new ChoiceDragListener());
+        tTarget3.setOnDragListener(new ChoiceDragListener());
+        tTarget4.setOnDragListener(new ChoiceDragListener());
 
         return view;
     }
@@ -135,7 +149,7 @@ public class Finish_sentence_frag extends Fragment {
 
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
-                        dropTarget.setText(dropTarget.getText() + " " + dropped.getText());
+                        dropTarget.setText(dropped.getText());
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                      //   dropTarget.setOnDragListener(null);
                     }
