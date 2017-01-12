@@ -89,14 +89,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            /*
-             * Drag details: we only need default behavior
-             * - clip data could be set to pass data as part of drag
-             * - shadow can be tailored
-             */
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                //start dragging the item touched
                 view.startDrag(data, shadowBuilder, view, 0);
                 return true;
             } else {
@@ -112,13 +106,10 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    //no action necessary
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    //no action necessary
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
-                    //no action necessary
                     break;
                 case DragEvent.ACTION_DROP:
 
