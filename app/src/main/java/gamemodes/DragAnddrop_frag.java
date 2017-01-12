@@ -168,6 +168,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
                         if(correct==4) {
                             bReady.setVisibility(View.VISIBLE);
+
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
                                     .stream(5000l);
                         }
