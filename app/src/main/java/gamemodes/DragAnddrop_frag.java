@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.esperanto.ButtonThread;
 import com.example.esperanto.R;
 import com.github.jinatonic.confetti.CommonConfetti;
 
@@ -25,6 +27,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private Button bReady;
     private int correct;
     public ViewGroup container;
+    public ButtonThread buttonthread;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -167,10 +170,9 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
 
                         if(correct==4) {
-                            bReady.setVisibility(View.VISIBLE);
-
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
-                                    .stream(5000l);
+                                    .stream(1500l);
+                            buttonthread = new ButtonThread(bReady);
                         }
 
 

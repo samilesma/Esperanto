@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,21 +17,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.R;
+import com.github.jinatonic.confetti.CommonConfetti;
 
 
-public class DescribeImage_frag extends Fragment {
+public class DescribeImage_frag extends Fragment implements View.OnClickListener {
 
-    Controller c;
-    TextView t1,t2,t3,t4,t5,t6,tTarget;
-    ImageView i1;
+    private Controller c;
+    private TextView t1,t2,t3,t4,t5,t6,tTarget;
+    private ImageView i1;
+    private Button bReady;
+    public ViewGroup container;
+    public ButtonThread buttonthread;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.describe_image_frag, container, false);
         Bundle args = getArguments();
+
+        this.container=container;
 
 
         t1 = (TextView) view.findViewById(R.id.tText1);
@@ -43,11 +51,10 @@ public class DescribeImage_frag extends Fragment {
         tTarget.setTag("Citrono");
         i1 = (ImageView) view.findViewById(R.id.iDescribe);
 
-        //t1.setText(args.getString("Text1"));
-        //t2.setText(args.getString("Text2"));
-        //t3.setText(args.getString("Text3"));
-        //t4.setText(args.getString("Text4"));
-        //t5.setText(args.getString("Text5"));
+        bReady = (Button) view.findViewById(R.id.bReady);
+
+        bReady.setOnClickListener(this);
+        bReady.setVisibility(View.INVISIBLE);
 
         t1.setText("Plato");
         t2.setText("O");
@@ -68,6 +75,12 @@ public class DescribeImage_frag extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @SuppressLint("NewApi")
         @Override
@@ -115,6 +128,10 @@ public class DescribeImage_frag extends Fragment {
                     //checking whether first character of dropTarget equals first character of dropped
                     if(dropTarget.getTag().toString().charAt(0) == dropped.getText().toString().charAt(0))
                     {
+                        CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                                .stream(3000l);
+                        buttonthread = new ButtonThread(bReady);
+
                         //stop displaying the view where it was before it was dragged
                         view.setVisibility(View.INVISIBLE);
                         //update the text in the target view to reflect the data being dropped
@@ -136,7 +153,8 @@ public class DescribeImage_frag extends Fragment {
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped
                         Toast.makeText(getActivity(), "Malgûsta",
-                                Toast.LENGTH_LONG).show();                    break;
+                                Toast.LENGTH_LONG).show();
+                    break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary
                     break;

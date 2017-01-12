@@ -1,35 +1,25 @@
 package gamemodes;
 
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentContainer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.esperanto.Audio;
+import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
 import com.example.esperanto.R;
 import com.github.jinatonic.confetti.CommonConfetti;
 
-
-
-
 import java.util.Random;
-
-
 
 
 public class Picture_choose_frag extends Fragment implements View.OnClickListener {
@@ -46,6 +36,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private String levelType;
     private int level;
     private ViewGroup container;
+    private ButtonThread buttonthread;
 
 
     @Override
@@ -95,11 +86,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if((v==iPicture1 && soundPlay==1) || (v==iPicture2 && soundPlay==2) || (v==iPicture3 && soundPlay==3)
                 || (v==iPicture4 && soundPlay==4 )){
-            tElekti.setText("Yaaaaaayyyyy!!!!");
-            tElekti.setTextColor(Color.GREEN);
-            bReady.setVisibility(View.VISIBLE);
+            tElekti.setText("");
             CommonConfetti.rainingConfetti(this.container ,new int[] { Color.GREEN,Color.BLUE })
-                    .stream(5000l);
+                    .stream(3000l);
+            buttonthread = new ButtonThread(bReady);
         }
 
         else{
@@ -114,4 +104,6 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         }
 
     }
+
+
 }
