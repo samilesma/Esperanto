@@ -49,7 +49,7 @@ public class Finish_sentence_frag extends Fragment {
         JSONArray Jimages2=null;
         JSONArray images=null;
         try {
-            Jimages1=c.json.getJSONArray("GM");
+            Jimages1=c.json.getJSONArray("gm");
             JSONObject Jimages3=Jimages1.getJSONObject(c.levelLength-1);
             Jimages1=Jimages3.getJSONArray("list1");
             Jimages2=Jimages3.getJSONArray("list2");
@@ -61,8 +61,8 @@ public class Finish_sentence_frag extends Fragment {
         for(int i=1;i<=6;i++) {
             t = (TextView) view.findViewById(ts[i-1]);
             try {
-                if(i<5) t.setText(Jimages1.getString(i-1));
-                else t.setText(Jimages2.getString(i-1));
+                if(rand[i-1]<5) t.setText(Jimages1.getString(rand[i-1]-1));
+                else t.setText(Jimages2.getString(rand[i-1]-4-1));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -149,7 +149,7 @@ public class Finish_sentence_frag extends Fragment {
 
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
-                        dropTarget.setText(dropTarget.getText() + " " + dropped.getText());
+                        dropTarget.setText(dropped.getText());
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                      //   dropTarget.setOnDragListener(null);
                     }
@@ -166,21 +166,4 @@ public class Finish_sentence_frag extends Fragment {
             return true;
         }
     }
-
-    public Finish_sentence_frag newInstance(int image1, String t1, String t2, String t3, String t4, String tTarget) {
-        Finish_sentence_frag f = new Finish_sentence_frag();
-        // Supply index input as an argument.
-        Bundle args = new Bundle();
-        args.putInt("image", R.drawable.domo);
-        args.putString("Text1","Plomo");
-        args.putString("Text2","Auto");
-        args.putString("Text3","Domo");
-        args.putString("Text4","Cevalo");
-        args.putString("Text5","Plata");
-        args.putString("tTarget","Domo");
-        f.setArguments(args);
-        return f;
-    }
-
-
 }
