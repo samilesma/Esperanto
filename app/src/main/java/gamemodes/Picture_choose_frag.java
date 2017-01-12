@@ -3,13 +3,16 @@ package gamemodes;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentContainer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,8 +22,8 @@ import com.example.esperanto.Audio;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
 import com.example.esperanto.R;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.github.jinatonic.confetti.CommonConfetti;
+
 
 
 
@@ -42,7 +45,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private Controller c;
     private String levelType;
     private int level;
-
+    private ViewGroup container;
 
 
     @Override
@@ -51,7 +54,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
         View view = inflater.inflate(R.layout.picture_choose_frag, container, false);
 
-
+        this.container = container;
 
 
         iPicture1 = (ImageView) view.findViewById(R.id.iPicture1);
@@ -69,13 +72,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         new Image(iPicture3).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/3.png");
         new Image(iPicture4).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/4.png");
 
-        try {
-            JSONArray images=c.json.getJSONArray("images");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        soundPlay=random.nextInt(4)+1;
+        System.out.println(soundPlay);
+        new Audio("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/"+soundPlay+".mp3");
 
-        new Audio("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+level+"/"+2+".mp3");
 
 
         bReady = (Button) view.findViewById(R.id.bReady);
@@ -88,22 +88,18 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         bReady.setOnClickListener(this);
         bReady.setVisibility(View.INVISIBLE);
 
-
-        //soundPlay=random.nextInt(4);
-        //System.out.println(soundPlay);
-        //playSound(soundPlay);
-
-
-
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if((v==iPicture1 && soundPlay==0) || (v==iPicture2 && soundPlay==1) || (v==iPicture3 && soundPlay==2)
-                || (v==iPicture4 && soundPlay==3 )){
+        if((v==iPicture1 && soundPlay==1) || (v==iPicture2 && soundPlay==2) || (v==iPicture3 && soundPlay==3)
+                || (v==iPicture4 && soundPlay==4 )){
             tElekti.setText("Yaaaaaayyyyy!!!!");
+            tElekti.setTextColor(Color.GREEN);
             bReady.setVisibility(View.VISIBLE);
+            CommonConfetti.rainingConfetti(this.container ,new int[] { Color.GREEN,Color.BLUE })
+                    .stream(5000l);
         }
 
         else{
@@ -112,16 +108,10 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         }
 
         if(v==bReady){
+
             getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new DescribeImage_frag()).addToBackStack(null).commit();
         }
 
     }
-
-    public void playSound(int sound){
-        mPlayer = MediaPlayer.create(this.getContext(), sounds[sound]);
-        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mPlayer.start();
-    }
-
 }

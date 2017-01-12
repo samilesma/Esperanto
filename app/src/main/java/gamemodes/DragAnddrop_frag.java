@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.DragEvent;
@@ -15,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.esperanto.R;
-
+import com.github.jinatonic.confetti.CommonConfetti;
 
 
 public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
@@ -23,64 +24,48 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private TextView t1,t2,t3,t4;
     private Button bReady;
     private int correct;
+    public ViewGroup container;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.drag_and_drop_frag, container, false);
+        levelType = c.levelType;
+        currentLevel = c.currentLevel;
+        rand=c.RandomizeArray(rand);
 
-        i1 = (ImageView) view.findViewById(R.id.i1);
-        i2 = (ImageView) view.findViewById(R.id.i2);
-        i3 = (ImageView) view.findViewById(R.id.i3);
-        i4 = (ImageView) view.findViewById(R.id.i4);
+        for(int i=1;i<=4;i++) System.out.println(rand[i-1]+" ");
 
-        iUN1 = (ImageView) view.findViewById(R.id.iUN1);
-        iUN2 = (ImageView) view.findViewById(R.id.iUN2);
-        iUN3 = (ImageView) view.findViewById(R.id.iUN3);
-        iUN4 = (ImageView) view.findViewById(R.id.iUN4);
+        JSONArray Jimages=null;
+        try {
+            Jimages=c.json.getJSONArray("images");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        t1 = (TextView) view.findViewById(R.id.t1);
-        t2 = (TextView) view.findViewById(R.id.t2);
-        t3 = (TextView) view.findViewById(R.id.t3);
-        t4 = (TextView) view.findViewById(R.id.t4);
+        for(int i=1;i<=4;i++){
+            imageDrag = (ImageView) view.findViewById(imagesDrag[i-1]);
+            imageDrop = (ImageView) view.findViewById(imagesDrop[i-1]);
+            text = (TextView) view.findViewById(texts[i-1]);
+            new Image(imageDrag).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
+            imageDrag.setOnTouchListener(new ChoiceTouchListener());
+            imageDrop.setOnDragListener(new ChoiceDragListener());
+            imageDrag.setTag(rand[i-1]);
+            imageDrop.setTag(i);
+            try {
+                text.setText(Jimages.getString(i-1));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
+        this.container=container;
         bReady = (Button) view.findViewById(R.id.bReady);
-
-        i1.setImageResource(R.mipmap.cevaloo);
-        i2.setImageResource(R.mipmap.auto1);
-        i3.setImageResource(R.mipmap.banano);
-        i4.setImageResource(R.mipmap.citrono);
-
-        i1.setOnTouchListener(new ChoiceTouchListener());
-        i2.setOnTouchListener(new ChoiceTouchListener());
-        i3.setOnTouchListener(new ChoiceTouchListener());
-        i4.setOnTouchListener(new ChoiceTouchListener());
-
-        iUN1.setOnDragListener(new ChoiceDragListener());
-        iUN2.setOnDragListener(new ChoiceDragListener());
-        iUN3.setOnDragListener(new ChoiceDragListener());
-        iUN4.setOnDragListener(new ChoiceDragListener());
-
         bReady.setVisibility(View.INVISIBLE);
         bReady.setOnClickListener(this);
-
         correct=0;
 
-        i1.setTag(1);
-        i2.setTag(2);
-        i3.setTag(3);
-        i4.setTag(4);
-
-        iUN1.setTag(3);
-        iUN2.setTag(4);
-        iUN3.setTag(1);
-        iUN4.setTag(2);
-
-        t1.setText("Banano");
-        t2.setText("Citrono");
-        t3.setText("Cevalo");
-        t4.setText("Auto");
         return view;
     }
 
@@ -114,6 +99,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     }
     @SuppressLint("NewApi")
     private class ChoiceDragListener implements View.OnDragListener {
+
+
         @Override
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
@@ -159,7 +146,15 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                         dropTarget.setOnDragListener(null);
 
-                        if(correct==4) bReady.setVisibility(View.VISIBLE);
+
+                        if(correct==4) {
+                            bReady.setVisibility(View.VISIBLE);
+
+                            CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                                    .stream(5000l);
+                        }
+
+
                     }
                     else
                         //displays message if first character of dropTarget is not equal to first character of dropped

@@ -5,16 +5,20 @@ import android.support.v4.app.FragmentActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import gamemodes.DescribeImage_frag;
 import gamemodes.DragAnddrop_frag;
+import gamemodes.Finish_sentence_frag;
 import gamemodes.Fourpic_frag;
 import gamemodes.Picture_choose_frag;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Controller {
 
     public SharedPreferences level;
-    public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag()};
+    public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag(), new Finish_sentence_frag()};
     public static String levelType=null;
     public static int currentLevel=0;
     public static int levelLength=0;
@@ -45,11 +49,22 @@ public class Controller {
     }
 
     public Object getNextLevel() throws JSONException {
-        JSONArray gm=json.getJSONArray("gm");
-        JSONObject lvl=gm.getJSONObject(levelLength++);
+        JSONArray gm = json.getJSONArray("gm");
+        JSONObject lvl = gm.getJSONObject(levelLength++);
 
-        return GM[lvl.getInt("type")-1];
+        return GM[lvl.getInt("type") - 1];
     }
 
+    public int[] RandomizeArray(int[] array){
+        Random rgen = new Random();  // Random number generator
 
+        for (int i=0; i<array.length; i++) {
+            int randomPosition = rgen.nextInt(array.length);
+            int temp = array[i];
+            array[i] = array[randomPosition];
+            array[randomPosition] = temp;
+        }
+
+        return array;
+    }
 }
