@@ -67,20 +67,12 @@ public class Finish_sentence_frag extends Fragment {
         t5.setText("Banano");
         t6.setText("Citrono");
 
-        i1 = (ImageView) view.findViewById(R.id.iDescribe);
-
         //t1.setText(args.getString("Text1"));
         //t2.setText(args.getString("Text2"));
         //t3.setText(args.getString("Text3"));
         //t4.setText(args.getString("Text4"));
         //t5.setText(args.getString("Text5"));
 
-        t1.setText("Plato");
-        t2.setText("O");
-        t3.setText("Plomo");
-        t4.setText("Domo");
-        t5.setText("Citrono");
-        t6.setText("Auto");
         i1.setImageResource(R.mipmap.citrono);
 
         t1.setOnTouchListener(new ChoiceTouchListener());
