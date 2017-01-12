@@ -14,13 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-<<<<<<< HEAD
 
 import com.example.esperanto.ButtonThread;
-=======
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
->>>>>>> origin/master
 import com.example.esperanto.R;
 import com.github.jinatonic.confetti.CommonConfetti;
 
@@ -37,11 +34,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private int correct,currentLevel;
     private Controller c=new Controller(getActivity());
     public ViewGroup container;
-<<<<<<< HEAD
     public ButtonThread buttonthread;
-=======
     private int[] rand={1,2,3,4};
->>>>>>> origin/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
