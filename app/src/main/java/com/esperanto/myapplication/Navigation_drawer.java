@@ -78,28 +78,23 @@ public class Navigation_drawer extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.play) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Fourpic_frag(), "last").addToBackStack(null).commit();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.levels) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Levels_frag(), "last").addToBackStack(null).commit();
 
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.settings) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Settings_frag(), "last").addToBackStack(null).commit();
-
-
         }
-        /** else if (id == R.id.nav_manage) {
-
-         }/** else if (id == R.id.nav_share) {
-
-         } else if (id == R.id.nav_send) {
-
-         }**/
+        else if (id == R.id.ordliste) {
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Finish_sentence_frag(), "last").addToBackStack(null).commit();
+        }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

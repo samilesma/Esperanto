@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import gamemodes.DescribeImage_frag;
 import gamemodes.DragAnddrop_frag;
+import gamemodes.Finish_sentence_frag;
 import gamemodes.Fourpic_frag;
 import gamemodes.Picture_choose_frag;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,7 +18,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Controller {
 
     public SharedPreferences level;
-    public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag()};
+    public static Object GM[]=new Object[]{new DescribeImage_frag(),new DragAnddrop_frag(),new Fourpic_frag(),new Picture_choose_frag(), new Finish_sentence_frag()};
     public static String levelType=null;
     public static int currentLevel=0;
     public static int levelLength=0;
