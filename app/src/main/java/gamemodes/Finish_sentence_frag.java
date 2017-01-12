@@ -17,72 +17,76 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.esperanto.Controller;
+import com.example.esperanto.Image;
 import com.example.esperanto.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.example.esperanto.R.id.t1;
+import static com.example.esperanto.R.id.t2;
 
 
 public class Finish_sentence_frag extends Fragment {
 
-    Controller c;
-    TextView t1, t2, t3, t4, t5, t6, tTarget1, tTarget2, tTarget3, tTarget4;
+    Controller c=new Controller(getActivity());
+    TextView t, tT;
     ImageView i1,i2;
+    private int[] ts={R.id.tText1,R.id.tText2,R.id.tText3,R.id.tText4,R.id.tText5,R.id.tText6};
+    private int[] tTs={R.id.tTarget1,R.id.tTarget2,R.id.tTarget3,R.id.tTarget4};
+    private int[] rand={1,2,3,4,5,6};
+    private String levelType;
+    private int currentLevel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.finish_the_setence_frag, container, false);
-        Bundle args = getArguments();
+        levelType = c.levelType;
+        currentLevel = c.currentLevel;
+        rand=c.RandomizeArray(rand);
+        JSONArray Jimages1=null;
+        JSONArray Jimages2=null;
+        JSONArray images=null;
+        try {
+            Jimages1=c.json.getJSONArray("GM");
+            JSONObject Jimages3=Jimages1.getJSONObject(c.levelLength-1);
+            Jimages1=Jimages3.getJSONArray("list1");
+            Jimages2=Jimages3.getJSONArray("list2");
+            images=Jimages3.getJSONArray("images");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        for(int i=1;i<=6;i++) {
+            t = (TextView) view.findViewById(ts[i-1]);
+            try {
+                if(i<5) t.setText(Jimages1.getString(i-1));
+                else t.setText(Jimages2.getString(i-1));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            t.setOnTouchListener(new ChoiceTouchListener());
+        }
 
-        t1 = (TextView) view.findViewById(R.id.tText1);
-        t2 = (TextView) view.findViewById(R.id.tText2);
-        t3 = (TextView) view.findViewById(R.id.tText3);
-        t4 = (TextView) view.findViewById(R.id.tText4);
-        t5 = (TextView) view.findViewById(R.id.tText5);
-        t6 = (TextView) view.findViewById(R.id.tText6);
-
-        tTarget1 = (TextView) view.findViewById(R.id.tTarget1);
-        tTarget2 = (TextView) view.findViewById(R.id.tTarget2);
-        tTarget3 = (TextView) view.findViewById(R.id.tTarget3);
-        tTarget4 = (TextView) view.findViewById(R.id.tTarget4);
-
-
-        // Twoletters.class.getMethods();
-        tTarget1.setTag("Uno");
-        tTarget2.setTag("Auto");
-        tTarget3.setTag("Dos");
-        tTarget4.setTag("Banano");
+        for(int i=1;i<=4;i++) {
+            tT = (TextView) view.findViewById(tTs[i-1]);
+            try {
+                tT.setTag(Jimages1.getString(i-1));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            tT.setOnDragListener(new ChoiceDragListener());
+        }
 
         i1 = (ImageView) view.findViewById(R.id.iDescribe1);
         i2 = (ImageView) view.findViewById(R.id.iDescribe2);
-
-
-
-        t1.setText("Auto");
-        t2.setText("Cevalo");
-        t3.setText("Dos");
-        t4.setText("Uno");
-        t5.setText("Banano");
-        t6.setText("Citrono");
-
-        //t1.setText(args.getString("Text1"));
-        //t2.setText(args.getString("Text2"));
-        //t3.setText(args.getString("Text3"));
-        //t4.setText(args.getString("Text4"));
-        //t5.setText(args.getString("Text5"));
-
-        i1.setImageResource(R.mipmap.citrono);
-
-        t1.setOnTouchListener(new ChoiceTouchListener());
-        t2.setOnTouchListener(new ChoiceTouchListener());
-        t3.setOnTouchListener(new ChoiceTouchListener());
-        t4.setOnTouchListener(new ChoiceTouchListener());
-        t5.setOnTouchListener(new ChoiceTouchListener());
-        t6.setOnTouchListener(new ChoiceTouchListener());
-
-        tTarget1.setOnDragListener(new ChoiceDragListener());
-        tTarget2.setOnDragListener(new ChoiceDragListener());
-        tTarget3.setOnDragListener(new ChoiceDragListener());
-        tTarget4.setOnDragListener(new ChoiceDragListener());
+        try {
+            new Image(i1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(0)+".png");
+            new Image(i2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(1)+".png");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
