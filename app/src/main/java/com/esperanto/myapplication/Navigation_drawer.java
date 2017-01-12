@@ -93,6 +93,12 @@ public class Navigation_drawer extends AppCompatActivity
 
 
         }
+        else if (id == R.id.nav_slideshow1) {
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                    .replace(R.id.fragmentindhold, new Finish_sentence_frag(), "last").addToBackStack(null).commit();
+
+
+        }
         /** else if (id == R.id.nav_manage) {
 
          }/** else if (id == R.id.nav_share) {
