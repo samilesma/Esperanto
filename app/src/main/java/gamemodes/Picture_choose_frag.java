@@ -19,6 +19,8 @@ import com.example.esperanto.Image;
 import com.example.esperanto.R;
 import com.github.jinatonic.confetti.CommonConfetti;
 
+import org.json.JSONException;
+
 import java.util.Random;
 
 
@@ -99,8 +101,12 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
         if(v==bReady){
 
-            getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new DescribeImage_frag()).addToBackStack(null).commit();
+            try {
+                getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                        .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
     }
