@@ -42,6 +42,7 @@ public class Finish_sentence_frag extends Fragment {
         t4 = (TextView) view.findViewById(R.id.tText4);
         t5 = (TextView) view.findViewById(R.id.tText5);
         t6 = (TextView) view.findViewById(R.id.tText6);
+<<<<<<< HEAD
 
         tTarget1 = (TextView) view.findViewById(R.id.tTarget1);
         tTarget2 = (TextView) view.findViewById(R.id.tTarget2);
@@ -66,6 +67,28 @@ public class Finish_sentence_frag extends Fragment {
         t4.setText("Uno");
         t5.setText("Banano");
         t6.setText("Citrono");
+=======
+        tTarget = (TextView) view.findViewById(R.id.tTarget);
+
+4
+        tTarget.setTag("Citrono" + "Plato" + "O");
+        tTarget.setText("This is");
+
+        i1 = (ImageView) view.findViewById(R.id.iDescribe);
+
+        //t1.setText(args.getString("Text1"));
+        //t2.setText(args.getString("Text2"));
+        //t3.setText(args.getString("Text3"));
+        //t4.setText(args.getString("Text4"));
+        //t5.setText(args.getString("Text5"));
+
+        t1.setText("Plato");
+        t2.setText("O");
+        t3.setText("Plomo");
+        t4.setText("Domo");
+        t5.setText("Citrono");
+        t6.setText("Auto");
+>>>>>>> origin/master
         i1.setImageResource(R.mipmap.citrono);
 
         t1.setOnTouchListener(new ChoiceTouchListener());
@@ -174,12 +197,6 @@ public class Finish_sentence_frag extends Fragment {
         f.setArguments(args);
         return f;
     }
-    public class Twoletters {
 
-
-        public Twoletters(TextView t2, TextView t5) {
-
-        }
-    }
 
 }
