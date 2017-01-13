@@ -2,10 +2,12 @@ package com.example.esperanto;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 public class Settings_frag extends Fragment {
@@ -15,11 +17,17 @@ public class Settings_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_settings, container, false);
+        View view = inflater.inflate(R.layout.settings_frag, container, false);
 
-        sSound = (Switch) view.findViewById(R.id.sSound);
         sNotification = (Switch) view.findViewById(R.id.sNotification);
+        sNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.v("Switch State=", ""+isChecked);
+            }
+
+        });
         return view;
     }
 }
