@@ -42,6 +42,7 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
     private int[] rand={1,2,3,4,5,6};
     private String levelType;
     private int currentLevel;
+    private int correct=0;
     private ButtonThread buttonthread;
     public ViewGroup container;
 
@@ -96,6 +97,7 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
         }
 
         bReady = (Button) view.findViewById(R.id.bReady);
+        bReady.setVisibility(View.INVISIBLE);
         bReady.setOnClickListener(this);
 
         return view;
@@ -167,6 +169,8 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
                         dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
                         //if an item has already been dropped here, there will be a tag
                         Object tag = dropTarget.getTag();
+                        correct++;
+
                         //if there is already an item here, set it back visible in its original place
                         if(tag!=null)
                         {
@@ -174,9 +178,12 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setText(dropped.getText());
-                        CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
-                                .stream(3000l);
-                        buttonthread = new ButtonThread(bReady);
+
+                        if(correct==4){
+                            CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                                    .stream(3000l);
+                            buttonthread = new ButtonThread(bReady);
+                        }
 
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                      //   dropTarget.setOnDragListener(null);
