@@ -44,12 +44,15 @@ public class Controller {
 
         currentLevel=lvl;
         levelType=type;
+        levelLength=0;
         this.json=json;
     }
 
     public Object getNextLevel() throws JSONException {
         JSONArray gm = json.getJSONArray("gm");
-        JSONObject lvl = gm.getJSONObject(levelLength++);
+        JSONObject lvl;
+        if(gm.length()>levelLength) lvl = gm.getJSONObject(levelLength++);
+        else return new Levels_frag();
 
         return GM[lvl.getInt("type") - 1];
     }
