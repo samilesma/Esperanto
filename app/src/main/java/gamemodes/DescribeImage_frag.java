@@ -112,6 +112,14 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        if(v==bReady){
+            try {
+                getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                        .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
