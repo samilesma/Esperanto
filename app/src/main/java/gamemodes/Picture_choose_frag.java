@@ -34,7 +34,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private int[] sounds = {R.raw.sound1, R.raw.sound2, R.raw.sound3, R.raw.sound4};
     private Random random = new Random();
     private int soundPlay;
-    private Controller c;
+    private Controller c = new Controller(getActivity());
     private String levelType;
     private int level;
     private ViewGroup container;

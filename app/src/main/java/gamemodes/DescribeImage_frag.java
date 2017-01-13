@@ -19,18 +19,26 @@ import android.widget.Toast;
 
 import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
+import com.example.esperanto.Image;
 import com.example.esperanto.R;
 import com.github.jinatonic.confetti.CommonConfetti;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 
 public class DescribeImage_frag extends Fragment implements View.OnClickListener {
 
-    private Controller c;
     private TextView t1,t2,t3,t4,t5,t6,tTarget;
     private ImageView i1;
     private Button bReady;
+    private String levelType;
+    private int currentLevel;
+    private Controller c = new Controller(getActivity());
     public ViewGroup container;
     public ButtonThread buttonthread;
+    private int [] randomWords = {1,2,3,4,5,6};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +47,33 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
         Bundle args = getArguments();
 
         this.container=container;
+
+        levelType=c.levelType;
+        currentLevel=c.currentLevel;
+        randomWords=c.RandomizeArray(randomWords);
+
+        JSONArray Jimages=null;
+        try {
+            Jimages=c.json.getJSONArray("images");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        for(int i=1;i<=6;i++){
+            ImageView imageDrag = (ImageView) view.findViewById(imagesDrag[i - 1]);
+            ImageView imageDrop = (ImageView) view.findViewById(imagesDrop[i - 1]);
+            text = (TextView) view.findViewById(texts[i-1]);
+            new Image(imageDrag).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
+            imageDrag.setOnTouchListener(new DragAnddrop_frag.ChoiceTouchListener());
+            imageDrop.setOnDragListener(new DragAnddrop_frag.ChoiceDragListener());
+            imageDrag.setTag(rand[i-1]);
+            imageDrop.setTag(i);
+            try {
+                text.setText(Jimages.getString(i-1));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
 
         t1 = (TextView) view.findViewById(R.id.tText1);
