@@ -116,7 +116,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="54dp">
 
         <TextView
             android:text="text4"
@@ -154,5 +154,17 @@
             android:id="@+id/tText6"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <Button
+        android:text="Mi pretas"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bReady"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button"
+        android:textColor="@android:color/background_light"/>
+
+
+
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,9 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
 import com.example.esperanto.R;
+import com.github.jinatonic.confetti.CommonConfetti;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,20 +31,24 @@ import static com.example.esperanto.R.id.t1;
 import static com.example.esperanto.R.id.t2;
 
 
-public class Finish_sentence_frag extends Fragment {
+public class Finish_sentence_frag extends Fragment implements View.OnClickListener {
 
-    Controller c=new Controller(getActivity());
-    TextView t, tT;
-    ImageView i1,i2;
+    private Controller c=new Controller(getActivity());
+    private TextView t, tT;
+    private ImageView i1,i2;
+    private Button bReady;
     private int[] ts={R.id.tText1,R.id.tText2,R.id.tText3,R.id.tText4,R.id.tText5,R.id.tText6};
     private int[] tTs={R.id.tTarget1,R.id.tTarget2,R.id.tTarget3,R.id.tTarget4};
     private int[] rand={1,2,3,4,5,6};
     private String levelType;
     private int currentLevel;
+    private ButtonThread buttonthread;
+    public ViewGroup container;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.finish_the_setence_frag, container, false);
+        this.container=container;
         levelType = c.levelType;
         currentLevel = c.currentLevel;
         rand=c.RandomizeArray(rand);
@@ -87,8 +94,25 @@ public class Finish_sentence_frag extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        bReady = (Button) view.findViewById(R.id.bReady);
+        bReady.setOnClickListener(this);
+
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        if(v==bReady){
+            try {
+                getFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+                        .replace(R.id.fragmentindhold, (Fragment) c.getNextLevel()).addToBackStack(null).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @SuppressLint("NewApi")
         @Override
@@ -150,6 +174,10 @@ public class Finish_sentence_frag extends Fragment {
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
                         dropTarget.setText(dropped.getText());
+                        CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                                .stream(3000l);
+                        buttonthread = new ButtonThread(bReady);
+
                         //remove setOnDragListener by setting OnDragListener to null, so that no further drag & dropping on this TextView can be done
                      //   dropTarget.setOnDragListener(null);
                     }
