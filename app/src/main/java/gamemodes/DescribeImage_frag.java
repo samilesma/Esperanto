@@ -25,6 +25,9 @@ import com.github.jinatonic.confetti.CommonConfetti;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Random;
 
 
 public class DescribeImage_frag extends Fragment implements View.OnClickListener {
@@ -37,7 +40,10 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
     private Controller c = new Controller(getActivity());
     public ViewGroup container;
     public ButtonThread buttonthread;
+    private Random random = new Random();
+    private int chooseWords;
     private int [] randomWords = {1,2,3,4,5,6};
+    private int [] randomText = {R.id.tText1,R.id.tText2,R.id.tText3,R.id.tText4,R.id.tText5,R.id.tText6};
 
 
     @Override
@@ -53,58 +59,51 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
         randomWords=c.RandomizeArray(randomWords);
 
         JSONArray Jimages=null;
+        JSONArray Jtext=null;
+        JSONObject Jobject=null;
         try {
             Jimages=c.json.getJSONArray("images");
+            Jtext = c.json.getJSONArray("gm");
+            Jobject = Jtext.getJSONObject(c.levelLength-1);
+            Jtext = Jobject.getJSONArray("list");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        for(int i=1;i<=6;i++){
-            ImageView imageDrag = (ImageView) view.findViewById(imagesDrag[i - 1]);
-            ImageView imageDrop = (ImageView) view.findViewById(imagesDrop[i - 1]);
-            text = (TextView) view.findViewById(texts[i-1]);
-            new Image(imageDrag).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
-            imageDrag.setOnTouchListener(new DragAnddrop_frag.ChoiceTouchListener());
-            imageDrop.setOnDragListener(new DragAnddrop_frag.ChoiceDragListener());
-            imageDrag.setTag(rand[i-1]);
-            imageDrop.setTag(i);
+        for(int i=1;i<=6;i++) {
+            t1 = (TextView) view.findViewById(randomText[i-1]);
             try {
-                text.setText(Jimages.getString(i-1));
+                if(randomWords[i-1]<5) {
+                    t1.setText(Jimages.getString(randomWords[i-1]-1));
+                }
+                else {
+                    t1.setText(Jtext.getString(randomWords[i-1]-4-1));
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            t1.setOnTouchListener(new ChoiceTouchListener());
+
+
+
+        }
+        chooseWords = random.nextInt(4);
+        tTarget = (TextView) view.findViewById(R.id.tTarget);
+
+        try {
+            tTarget.setTag(Jimages.getString(chooseWords));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 
-        t1 = (TextView) view.findViewById(R.id.tText1);
-        t2 = (TextView) view.findViewById(R.id.tText2);
-        t3 = (TextView) view.findViewById(R.id.tText3);
-        t4 = (TextView) view.findViewById(R.id.tText4);
-        t5 = (TextView) view.findViewById(R.id.tText5);
-        t6 = (TextView) view.findViewById(R.id.tText6);
-        tTarget = (TextView) view.findViewById(R.id.tTarget);
-        tTarget.setTag("Citrono");
+
         i1 = (ImageView) view.findViewById(R.id.iDescribe);
-
+        new Image(i1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+(chooseWords+1)+".png");
         bReady = (Button) view.findViewById(R.id.bReady);
-
         bReady.setOnClickListener(this);
         bReady.setVisibility(View.INVISIBLE);
-
-        t1.setText("Plato");
-        t2.setText("O");
-        t3.setText("Plomo");
-        t4.setText("Domo");
-        t5.setText("Citrono");
-        t6.setText("Auto");
-        i1.setImageResource(R.mipmap.citrono);
-
-        t1.setOnTouchListener(new ChoiceTouchListener());
-        t2.setOnTouchListener(new ChoiceTouchListener());
-        t3.setOnTouchListener(new ChoiceTouchListener());
-        t4.setOnTouchListener(new ChoiceTouchListener());
-        t5.setOnTouchListener(new ChoiceTouchListener());
-        t6.setOnTouchListener(new ChoiceTouchListener());
 
         tTarget.setOnDragListener(new ChoiceDragListener());
 
