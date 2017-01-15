@@ -18,11 +18,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
+import com.example.esperanto.Controller;
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.Levels_frag;
 import com.example.esperanto.MyReceiver;
 import com.example.esperanto.R;
 import com.example.esperanto.Settings_frag;
+import com.example.esperanto.Wordlist_frag;
 
 import gamemodes.Finish_sentence_frag;
 import gamemodes.Fourpic_frag;
@@ -56,7 +58,7 @@ public class Navigation_drawer extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(setting.getNotification()) {
+        if(Controller.notification) {
             Calendar calendar = Calendar.getInstance();
 
             calendar.set(Calendar.HOUR_OF_DAY, 6);
@@ -110,7 +112,7 @@ public class Navigation_drawer extends AppCompatActivity
         }
         else if (id == R.id.ordliste) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Finish_sentence_frag(), "last").addToBackStack(null).commit();
+                    .replace(R.id.fragmentindhold, new Wordlist_frag(), "last").addToBackStack(null).commit();
 
         }
 

@@ -22,6 +22,7 @@ public class Controller {
     public static String levelType=null;
     public static int currentLevel=0;
     public static int levelLength=0;
+    public static boolean notification = true;
     public static JSONObject json=null;
 
     public Controller(FragmentActivity activity) {
