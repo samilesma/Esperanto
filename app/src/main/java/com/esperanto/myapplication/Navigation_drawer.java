@@ -1,7 +1,13 @@
 package com.esperanto.myapplication;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
+import java.util.Calendar;
+
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +20,7 @@ import android.view.MenuItem;
 
 import com.example.esperanto.Hovedmenu_frag;
 import com.example.esperanto.Levels_frag;
+import com.example.esperanto.MyReceiver;
 import com.example.esperanto.R;
 import com.example.esperanto.Settings_frag;
 
@@ -26,6 +33,8 @@ public class Navigation_drawer extends AppCompatActivity
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
+    private PendingIntent pendingIntent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,19 @@ public class Navigation_drawer extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Calendar calendar = Calendar.getInstance();
+
+
+        calendar.set(Calendar.HOUR_OF_DAY, 6);
+        calendar.set(Calendar.MINUTE, 30);
+        calendar.set(Calendar.AM_PM,Calendar.PM);
+
+        Intent myIntent = new Intent(Navigation_drawer.this, MyReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent,0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
         if (savedInstanceState == null) {
 
