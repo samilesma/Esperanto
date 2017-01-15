@@ -34,6 +34,7 @@ public class Navigation_drawer extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private PendingIntent pendingIntent;
+    Settings_frag setting;
 
 
     @Override
@@ -43,6 +44,7 @@ public class Navigation_drawer extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setting = new Settings_frag();
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -54,19 +56,19 @@ public class Navigation_drawer extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Calendar calendar = Calendar.getInstance();
+        if(setting.getNotification()) {
+            Calendar calendar = Calendar.getInstance();
 
+            calendar.set(Calendar.HOUR_OF_DAY, 6);
+            calendar.set(Calendar.MINUTE, 30);
+            calendar.set(Calendar.AM_PM, Calendar.PM);
 
-        calendar.set(Calendar.HOUR_OF_DAY, 6);
-        calendar.set(Calendar.MINUTE, 30);
-        calendar.set(Calendar.AM_PM,Calendar.PM);
+            Intent myIntent = new Intent(Navigation_drawer.this, MyReceiver.class);
+            pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
 
-        Intent myIntent = new Intent(Navigation_drawer.this, MyReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent,0);
-
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }
         if (savedInstanceState == null) {
 
             Fragment fragment = new Hovedmenu_frag();
@@ -109,7 +111,6 @@ public class Navigation_drawer extends AppCompatActivity
         else if (id == R.id.ordliste) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Finish_sentence_frag(), "last").addToBackStack(null).commit();
-
 
         }
 

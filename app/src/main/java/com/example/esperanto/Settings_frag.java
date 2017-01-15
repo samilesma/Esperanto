@@ -22,9 +22,7 @@ package com.example.esperanto;
 public class Settings_frag extends Fragment {
     private Switch sSound, sNotification;
     private Button b1;
-
-    int notifTD = 33;
-
+    private boolean notification = false;
     NotificationManager notificationManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +35,10 @@ public class Settings_frag extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked == true){
-                    showNotification(view);
+                    setNotification(true);
+                }
+                else{
+                    setNotification(false);
                 }
             }
 
@@ -45,7 +46,11 @@ public class Settings_frag extends Fragment {
         return view;
     }
 
-    public void showNotification(View view){
+    private void setNotification(Boolean notification){
+        this.notification = notification;
+    }
 
+    public boolean getNotification(){
+        return this.notification;
     }
 }
