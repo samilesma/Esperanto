@@ -170,7 +170,7 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
                     //checking whether first character of dropTarget equals first character of dropped
                     if(dropTarget.getTag().toString().charAt(0) == dropped.getText().toString().charAt(0))
                     {
-                        CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                        CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.RED, Color.MAGENTA, Color.BLACK })
                                 .stream(3000l);
                         buttonthread = new ButtonThread(bReady);
 
