@@ -1,6 +1,4 @@
 package gamemodes;
-
-
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.graphics.Color;
@@ -29,10 +27,9 @@ import org.json.JSONObject;
 
 import java.util.Random;
 
-
 public class DescribeImage_frag extends Fragment implements View.OnClickListener {
 
-    private TextView t1,t2,t3,t4,t5,t6,tTarget;
+    private TextView t1,tTarget;
     private ImageView i1;
     private Button bReady;
     private String levelType;
@@ -50,7 +47,6 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.describe_image_frag, container, false);
-        Bundle args = getArguments();
 
         this.container=container;
 
