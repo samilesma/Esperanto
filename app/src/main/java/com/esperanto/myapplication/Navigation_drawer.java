@@ -5,6 +5,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.Calendar;
 
 import android.os.SystemClock;
@@ -29,19 +31,17 @@ import com.example.esperanto.Wordlist_frag;
 import gamemodes.Finish_sentence_frag;
 import gamemodes.Fourpic_frag;
 
-public class Navigation_drawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+public class Navigation_drawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private PendingIntent pendingIntent;
     Settings_frag setting;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_navigation_drawer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
