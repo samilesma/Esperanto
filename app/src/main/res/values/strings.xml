@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_navigation">Navigation</string>
     <string name="title_activity_navigation_drawer">Esperanto-kurso</string>
+    <string name="Listview">Android ListView With Image And Text</string>
     <color name="gray">#DCDCDC</color>
 </resources>
