@@ -47,7 +47,7 @@ public class Controller {
     }
 
     public int[] RandomizeArray(int[] array){
-        Random rgen = new Random();  // Random number generator
+        Random rgen = new Random();
 
         for (int i=0; i<array.length; i++) {
             int randomPosition = rgen.nextInt(array.length);
