@@ -15,7 +15,6 @@
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
             <!--
@@ -37,12 +36,8 @@
                     android:scheme="http"/>
             </intent-filter>
         </activity>
-        <service android:name=".MyAlarmService"
-            android:enabled="true" />
-
+        <service android:name=".MyAlarmService" android:enabled="true" />
         <receiver android:name=".MyReceiver"/>
-
-
         <!--        <activity
                     android:name="com.esperanto.myapplication.Navigation_drawer"
                     android:label="@string/title_activity_navigation_drawer"
