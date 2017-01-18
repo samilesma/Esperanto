@@ -1,5 +1,6 @@
 package gamemodes;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,8 @@ import org.json.JSONException;
 
 import java.util.Random;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class Picture_choose_frag extends Fragment implements View.OnClickListener {
 
@@ -42,14 +45,12 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.picture_choose_frag, container, false);
 
+        save(c.levelType,c.currentLevel,c.levelLength);
+
         this.container = container;
-
-
         iPicture1 = (ImageView) view.findViewById(R.id.iPicture1);
         iPicture2 = (ImageView) view.findViewById(R.id.iPicture2);
         iPicture3 = (ImageView) view.findViewById(R.id.iPicture3);
@@ -111,5 +112,12 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
 
     }
 
-
+    public void save(String type, int lvl, int len) {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved", MODE_PRIVATE).edit();
+        editor.putString("type",type);
+        editor.putInt("lvl",lvl);
+        editor.putInt("len",len);
+        editor.putBoolean("saved",true);
+        editor.commit();
+    }
 }

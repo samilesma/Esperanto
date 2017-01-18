@@ -1,5 +1,6 @@
 package gamemodes;
 
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaExtractor;
 import android.media.MediaPlayer;
@@ -20,6 +21,8 @@ import com.example.esperanto.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Fourpic_frag extends Fragment implements View.OnClickListener {
 
     private TextView text;
@@ -34,9 +37,11 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
     private MediaPlayer mediePlayer;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View show = inflater.inflate(R.layout.fourpic_frag, container, false);
+
+        save(c.levelType,c.currentLevel,c.levelLength);
+
         levelType = c.levelType;
         currentLevel = c.currentLevel;
         JSONArray Jimages=null;
@@ -89,6 +94,12 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         });
     }
 
-
-
+    public void save(String type, int lvl, int len) {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved", MODE_PRIVATE).edit();
+        editor.putString("type",type);
+        editor.putInt("lvl",lvl);
+        editor.putInt("len",len);
+        editor.putBoolean("saved",true);
+        editor.commit();
+    }
 }

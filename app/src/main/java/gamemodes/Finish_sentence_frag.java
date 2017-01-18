@@ -3,6 +3,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.example.esperanto.R.id.t1;
 import static com.example.esperanto.R.id.t2;
 
@@ -49,6 +51,9 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.finish_the_setence_frag, container, false);
+
+        save(c.levelType,c.currentLevel,c.levelLength);
+
         this.container=container;
         levelType = c.levelType;
         currentLevel = c.currentLevel;
@@ -200,5 +205,14 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
             }
             return true;
         }
+    }
+
+    public void save(String type, int lvl, int len) {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved", MODE_PRIVATE).edit();
+        editor.putString("type",type);
+        editor.putInt("lvl",lvl);
+        editor.putInt("len",len);
+        editor.putBoolean("saved",true);
+        editor.commit();
     }
 }

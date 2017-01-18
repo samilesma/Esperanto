@@ -1,5 +1,6 @@
 package com.example.esperanto;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
@@ -12,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Levels_frag extends Fragment {
     private Controller c=new Controller(getActivity());
     private int beginner,intermediate,expert;
@@ -21,6 +24,10 @@ public class Levels_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.levels, container, false);
+
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved",MODE_PRIVATE).edit();
+        editor.putBoolean("saved",false);
+        editor.commit();
 
         String data="";
         try {

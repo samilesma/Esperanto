@@ -2,6 +2,7 @@ package gamemodes;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,8 @@ import com.github.jinatonic.confetti.CommonConfetti;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     private ImageView imageDrag,imageDrop;
@@ -40,6 +43,9 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.drag_and_drop_frag, container, false);
+
+        save(c.levelType,c.currentLevel,c.levelLength);
+
         levelType = c.levelType;
         currentLevel = c.currentLevel;
         rand=c.RandomizeArray(rand);
@@ -169,5 +175,14 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
             }
             return true;
         }
+    }
+
+    public void save(String type, int lvl, int len) {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved", MODE_PRIVATE).edit();
+        editor.putString("type",type);
+        editor.putInt("lvl",lvl);
+        editor.putInt("len",len);
+        editor.putBoolean("saved",true);
+        editor.commit();
     }
 }

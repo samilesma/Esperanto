@@ -1,6 +1,7 @@
 package gamemodes;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import org.json.JSONObject;
 
 import java.util.Random;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class DescribeImage_frag extends Fragment implements View.OnClickListener {
 
     private TextView t1,tTarget;
@@ -44,12 +47,12 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.describe_image_frag, container, false);
 
-        this.container=container;
+        save(c.levelType,c.currentLevel,c.levelLength);
 
+        this.container=container;
         levelType=c.levelType;
         currentLevel=c.currentLevel;
         randomWords=c.RandomizeArray(randomWords);
@@ -216,5 +219,14 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
         args.putString("tTarget","Domo");
         f.setArguments(args);
         return f;
+    }
+
+    public void save(String type, int lvl, int len) {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved", MODE_PRIVATE).edit();
+        editor.putString("type",type);
+        editor.putInt("lvl",lvl);
+        editor.putInt("len",len);
+        editor.putBoolean("saved",true);
+        editor.commit();
     }
 }
