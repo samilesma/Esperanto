@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class Levels_frag extends Fragment {
     private Controller c=new Controller(getActivity());
     private int beginner,intermediate,expert;
+    Display display;
+
     LinearLayout ll;
     Button b;
 
@@ -28,6 +31,7 @@ public class Levels_frag extends Fragment {
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("saved",MODE_PRIVATE).edit();
         editor.putBoolean("saved",false);
         editor.commit();
+        display = getActivity().getWindowManager().getDefaultDisplay();
 
         String data="";
         try {
@@ -46,14 +50,17 @@ public class Levels_frag extends Fragment {
             System.out.println("Beginner: "+beginner);
             System.out.println("Intermediate: "+intermediate);
             System.out.println("Expert: "+expert);
-
+            int width = display.getWidth(); // ((display.getWidth()*20)/100)
+            int height = display.getHeight();// ((display.getHeight()*30)/100)
+            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width/4,height/7);
             int t=1;
             ll = (LinearLayout)view.findViewById(R.id.beginner_linear);
             for(int i=1;i<=Integer.parseInt(json.getString("beginner"));i++) {
+
                 b = new Button(getActivity().getApplicationContext());
                 b.setText(""+i);
-                b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,220));
-                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, 130);
+                b.setLayoutParams(parms);
+                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, width/7);
                 ll.addView(b);
                 setOnClick(b,t++);
             }
@@ -62,8 +69,8 @@ public class Levels_frag extends Fragment {
             for(int i=1;i<=Integer.parseInt(json.getString("intermediate"));i++) {
                 b = new Button(getActivity().getApplicationContext());
                 b.setText(""+i);
-                b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,220));
-                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, 130);
+                b.setLayoutParams(parms);
+                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, width/7);
                 ll.addView(b);
                 setOnClick(b,t++);
             }
@@ -72,8 +79,8 @@ public class Levels_frag extends Fragment {
             for(int i=1;i<=Integer.parseInt(json.getString("expert"));i++) {
                 b = new Button(getActivity().getApplicationContext());
                 b.setText(""+i);
-                b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,220));
-                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, 130);
+                b.setLayoutParams(parms);
+                b.setTextSize(TypedValue.COMPLEX_UNIT_PX, width/7);
                 ll.addView(b);
                 setOnClick(b,t++);
             }
