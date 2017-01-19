@@ -10,7 +10,7 @@
         android:layout_height="440dp"
         android:id="@+id/list" />
 
-    <ScrollView
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
         <LinearLayout
@@ -18,9 +18,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
 
 
 </LinearLayout>
