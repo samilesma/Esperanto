@@ -29,6 +29,7 @@ public class Settings_frag extends Fragment {
         final View view = inflater.inflate(R.layout.settings_frag, container, false);
 
         sNotification = (Switch) view.findViewById(R.id.sNotification);
+        sNotification.setText(sNotification.getText() + ""+(char)7);
         sNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
