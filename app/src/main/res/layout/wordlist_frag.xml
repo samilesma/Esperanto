@@ -7,20 +7,20 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="440dp"
         android:id="@+id/list" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent">
         <LinearLayout
             android:id="@+id/lLay"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
         </LinearLayout>
     </ScrollView>
-
 
 
 </LinearLayout>
