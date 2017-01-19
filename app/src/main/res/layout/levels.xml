@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Beginner"
+        android:text="Komencanto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tBeginner"
@@ -30,7 +30,7 @@
         android:layout_height="65px" />
 
     <TextView
-        android:text="Intermediate"
+        android:text="Intera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tIntermediate"
@@ -55,7 +55,7 @@
         android:layout_height="65px" />
 
     <TextView
-        android:text="Expert"
+        android:text="Fakulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tExpert"
