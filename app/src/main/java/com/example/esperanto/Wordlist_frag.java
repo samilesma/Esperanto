@@ -14,9 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class Wordlist_frag extends Fragment {
@@ -90,7 +93,28 @@ public class Wordlist_frag extends Fragment {
             }
             bWord.setText(""+b);
             lLay.addView(bWord);
+            setOnClick(bWord);
             if(i==91) c=false;
         }
+    }
+
+    private void setOnClick(final Button b) {
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String json="";
+                try {
+                    json = new Web().execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json").get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                ListView lv = (ListView) getActivity().findViewById(R.id.list);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Word.muligeOrd);
+                lv.setAdapter(arrayAdapter);
+            }
+        });
     }
 }
