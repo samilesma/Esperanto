@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class Wordlist_frag extends Fragment {
     LinearLayout lLay;
     ListView li;
     LinearLayout images;
+    View view;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -44,7 +46,7 @@ public class Wordlist_frag extends Fragment {
         li=(ListView) view.findViewById(R.id.list);
         images=(LinearLayout) view.findViewById(R.id.images);
         setButtons();
-
+        this.view = view;
         return view;
     }
 
@@ -59,8 +61,13 @@ public class Wordlist_frag extends Fragment {
                 continue;
             }
             bWord = new Button(getActivity().getApplicationContext());
-            bWord.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,220));
-            bWord.setTextSize(TypedValue.COMPLEX_UNIT_PX, 130);
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            int width = display.getWidth(); // ((display.getWidth()*20)/100)
+            int height = display.getHeight();// ((display.getHeight()*30)/100)
+
+            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width/5,height/7);
+            bWord.setLayoutParams(parms);
+            bWord.setTextSize(TypedValue.COMPLEX_UNIT_PX, width/9);
             if((i!=68 && i!=72 && i!=73 && i!=75 && i!=84 && i!=86) || !t)
             {
                 b=(char)i;
@@ -114,8 +121,13 @@ public class Wordlist_frag extends Fragment {
                         ImageView img = new ImageView(getActivity());
                         new Image(img).execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/"+arr.get(i-1).toString().toLowerCase()+".png").get();
                         images.addView(img);
-                        img.getLayoutParams().height = IMG_DIM;
-                        img.getLayoutParams().width = IMG_DIM;
+                        Display display = getActivity().getWindowManager().getDefaultDisplay();
+                        int width = display.getWidth(); // ((display.getWidth()*20)/100)
+                        int height = display.getHeight();// ((display.getHeight()*30)/100)
+                        LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width/4,height/6);
+                        img.setLayoutParams(parms);
+    //                    img.getLayoutParams().height = IMG_DIM;
+    //                    img.getLayoutParams().width = IMG_DIM;
                         ar.add(arr.get(i-1).toString());
                     } catch (JSONException e) {
                         e.printStackTrace();

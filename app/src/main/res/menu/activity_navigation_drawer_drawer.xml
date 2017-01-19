@@ -2,10 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/play"
-            android:icon="@drawable/play"
-            android:title="Ludi"/>
+
         <item
             android:id="@+id/levels"
             android:icon="@drawable/levels"
