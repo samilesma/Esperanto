@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Audio;
 import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
@@ -184,6 +185,7 @@ public class Number_word_frag extends Fragment implements View.OnClickListener {
                         dropTarget.setText(dropped.getText());
 
                         if(correct==2){
+                            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.MAGENTA, Color.BLACK, Color.WHITE })
                                     .stream(3000l);
                             buttonthread = new ButtonThread(bReady);

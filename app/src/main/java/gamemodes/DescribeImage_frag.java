@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Audio;
 import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
@@ -169,6 +170,7 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
                     //checking whether first character of dropTarget equals first character of dropped
                     if(dropTarget.getTag().toString().charAt(0) == dropped.getText().toString().charAt(0))
                     {
+                        new Audio("http://quickconnect.dk/esperanto/happy.mp3");
                         CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.RED, Color.MAGENTA, Color.BLACK })
                                 .stream(3000l);
                         buttonthread = new ButtonThread(bReady);

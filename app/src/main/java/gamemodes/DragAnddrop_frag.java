@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esperanto.Audio;
 import com.example.esperanto.ButtonThread;
 import com.example.esperanto.Controller;
 import com.example.esperanto.Image;
@@ -155,7 +156,8 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
 
                         if(correct==4) {
-                            CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE })
+                            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+                            CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.BLACK, Color.MAGENTA, Color.WHITE, Color.YELLOW })
                                     .stream(1500l);
                             buttonthread = new ButtonThread(bReady);
                         }

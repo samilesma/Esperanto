@@ -44,6 +44,7 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
     private ButtonThread buttonthread;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.picture_choose_frag, container, false);
@@ -90,7 +91,8 @@ public class Picture_choose_frag extends Fragment implements View.OnClickListene
         if((v==iPicture1 && soundPlay==1) || (v==iPicture2 && soundPlay==2) || (v==iPicture3 && soundPlay==3)
                 || (v==iPicture4 && soundPlay==4 )){
             tElekti.setText("");
-            CommonConfetti.rainingConfetti(this.container ,new int[] { Color.GREEN,Color.BLUE })
+            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+            CommonConfetti.rainingConfetti(this.container ,new int[] { Color.GREEN,Color.BLUE, Color.MAGENTA, Color.BLACK, Color.WHITE, Color.YELLOW })
                     .stream(3000l);
             buttonthread = new ButtonThread(bReady);
         }
