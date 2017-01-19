@@ -37,7 +37,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="110dp"
+        android:layout_marginTop="4dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -67,7 +68,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="110dp"
+        android:layout_marginTop="4dp">
 
         <ImageView
             android:layout_width="170dp"
@@ -93,7 +95,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="110dp"
+        android:layout_marginTop="4dp">
 
         <ImageView
             android:layout_width="170dp"
