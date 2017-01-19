@@ -10,30 +10,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import static android.R.attr.data;
+
 
 public class Wordlist_frag extends Fragment {
+    public final int IMG_DIM=300;
     Button bWord;
     LinearLayout lLay;
-
-    // Array of strings for ListView Title
-    String[] listviewTitle = new String[]{
-            "ListView Title 1", "ListView Title 2", "ListView Title 3", "ListView Title 4",
-    };
-
-    int[] listviewImage = new int[]{
-            R.drawable.back, R.drawable.domo, R.drawable.elefanto, R.drawable.glass,
-    };
+    ListView li;
+    LinearLayout images;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -42,23 +41,9 @@ public class Wordlist_frag extends Fragment {
         final View view = inflater.inflate(R.layout.wordlist_frag, container, false);
 
         lLay = (LinearLayout) view.findViewById(R.id.lLay);
+        li=(ListView) view.findViewById(R.id.list);
+        images=(LinearLayout) view.findViewById(R.id.images);
         setButtons();
-
-        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-
-        for (int i = 0; i < listviewImage.length; i++) {
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("listview_title", listviewTitle[i]);
-            hm.put("listview_image", Integer.toString(listviewImage[i]));
-            aList.add(hm);
-        }
-
-        String[] from = {"listview_image", "listview_title", "listview_discription"};
-        int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
-
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), aList, R.layout.listview_activity, from, to);
-        ListView androidListView = (ListView) view.findViewById(R.id.list);
-        androidListView.setAdapter(simpleAdapter);
 
         return view;
     }
@@ -94,6 +79,7 @@ public class Wordlist_frag extends Fragment {
             bWord.setText(""+b);
             lLay.addView(bWord);
             setOnClick(bWord);
+            if(b=='A') bWord.performClick();
             if(i==91) c=false;
         }
     }
@@ -102,18 +88,47 @@ public class Wordlist_frag extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String json="";
+                String data="";
                 try {
-                    json = new Web().execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json").get();
+                    System.out.println("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json");
+                    data = new Web().execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json").get();
+                    System.out.println(data);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
 
-                ListView lv = (ListView) getActivity().findViewById(R.id.list);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Word.muligeOrd);
-                lv.setAdapter(arrayAdapter);
+                JSONArray arr=null;
+                try {
+                    JSONObject json=new JSONObject(data);
+                    arr=json.getJSONArray("");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                images.removeAllViews();
+                ArrayList<String> ar=new ArrayList<String>();
+                for(int i=1; i<=arr.length(); i++) {
+                    try {
+                        ImageView img = new ImageView(getActivity());
+                        new Image(img).execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/"+arr.get(i-1).toString().toLowerCase()+".png").get();
+                        images.addView(img);
+                        img.getLayoutParams().height = IMG_DIM;
+                        img.getLayoutParams().width = IMG_DIM;
+                        ar.add(arr.get(i-1).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(ar);
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.wordlist_text,ar);
+                li.setAdapter(arrayAdapter);
             }
         });
     }
