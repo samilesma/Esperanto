@@ -96,10 +96,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.play) {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
-                    .replace(R.id.fragmentindhold, new Fourpic_frag(), "last").addToBackStack(null).commit();
-        } else if (id == R.id.levels) {
+        if (id == R.id.levels) {
             getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
                     .replace(R.id.fragmentindhold, new Levels_frag(), "last").addToBackStack(null).commit();
 
