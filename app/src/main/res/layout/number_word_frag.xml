@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            app:srcCompat="@mipmap/auto1"
+            app:srcCompat="@drawable/glass"
             android:id="@+id/iDescribe2"
             android:layout_weight="1" />
     </LinearLayout>
