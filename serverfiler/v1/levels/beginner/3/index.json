@@ -1,0 +1,32 @@
+{
+  "img":4,
+  "mp3":4,
+  "images":[
+    "Ĝxirafo",
+	"Hundo",
+    "Ĥxoro",
+    "Infano"
+  ],
+  "gm":[
+    {
+      "type":3,
+      "random":false
+    },
+    {
+      "type":4,
+      "random":true
+    },
+    {
+      "type":1,
+      "random":true,
+      "list":[
+		"Jaka",
+		"Hxoro"
+      ]
+    },
+    {
+      "type":2,
+      "random":true
+    }
+  ]
+}

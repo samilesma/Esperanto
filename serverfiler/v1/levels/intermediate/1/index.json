@@ -1,0 +1,22 @@
+{
+	"img":1,
+	"mp3":0,
+	"gm":[
+		{
+			"type":6,
+			"images":[
+				1
+			],
+			"list1":[
+				"Unu",
+				"Banano"
+			],
+			"list2":[
+				"Uno",
+				"Aûto",
+				"Banana",
+				"Bananos"
+			]
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+  "img":4,
+  "mp3":4,
+  "images":[
+    "Domo",
+    "Elefanto",
+    "Fejro",
+    "Glaso"
+  ],
+  "gm":[
+    {
+      "type":3,
+      "random":false
+    },
+	{
+      "type":1,
+      "random":true,
+      "list":[
+		"Elefanti",
+		"Mucho"
+      ]
+    },
+    {
+      "type":2,
+      "random":true
+    },
+    {
+      "type":4,
+      "random":true
+    }
+  ]
+}

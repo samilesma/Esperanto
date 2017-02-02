@@ -1,0 +1,32 @@
+{
+  "img":4,
+  "mp3":4,
+  "images":[
+    "Auto",
+    "Banano",
+    "Citrono",
+    "Ĉevalo"
+  ],
+  "gm":[
+    {
+      "type":3,
+      "random":false
+    },
+    {
+      "type":2,
+      "random":true
+    },
+    {
+      "type":4,
+      "random":true
+    },
+    {
+      "type":1,
+      "random":true,
+      "list":[
+		"Uno",
+		"Citron"
+      ]
+    }
+  ]
+}
