@@ -96,8 +96,8 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
         i1 = (ImageView) view.findViewById(R.id.iDescribe1);
         i2 = (ImageView) view.findViewById(R.id.iDescribe2);
         try {
-            new Image(i1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(0)+".png");
-            new Image(i2).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(1)+".png");
+            new Image(i1).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(0)+".png");
+            new Image(i2).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(1)+".png");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -186,7 +186,7 @@ public class Finish_sentence_frag extends Fragment implements View.OnClickListen
                         dropTarget.setText(dropped.getText());
 
                         if(correct==4){
-                            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+                            new Audio("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/happy.mp3");
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.MAGENTA, Color.BLACK, Color.WHITE })
                                     .stream(3000l);
                             buttonthread = new ButtonThread(bReady);

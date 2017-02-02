@@ -28,7 +28,7 @@ public class Controller {
     }
 
     public void selectLevel(String type, int lvl) throws JSONException, ExecutionException, InterruptedException {
-        String data=new Web().execute("http://quickconnect.dk/esperanto/levels/"+type+"/"+lvl+"/index.json").get();
+        String data=new Web().execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+type+"/"+lvl+"/index.json").get();
         System.out.println(data);
         JSONObject json=new JSONObject(data);
 
@@ -61,7 +61,7 @@ public class Controller {
     }
 
     public Object load(String type, int lvl, int len) throws ExecutionException, InterruptedException, JSONException {
-        String data=new Web().execute("http://quickconnect.dk/esperanto/levels/"+type+"/"+lvl+"/index.json").get();
+        String data=new Web().execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+type+"/"+lvl+"/index.json").get();
         System.out.println(data);
         JSONObject json=new JSONObject(data);
 

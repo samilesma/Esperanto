@@ -54,7 +54,7 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         for(int i=1;i<=4;i++){
             text = (TextView) show.findViewById(texts[i-1]);
             image = (ImageView) show.findViewById(images[i-1]);
-            new Image(image).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+i+".png");
+            new Image(image).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+i+".png");
             setOnClick(image,i);
             try {
                 text.setText(Jimages.getString(i-1));
@@ -89,7 +89,7 @@ public class Fourpic_frag extends Fragment implements View.OnClickListener {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Audio("http://quickconnect.dk/esperanto/levels/" + levelType + "/" + currentLevel + "/" + i + ".mp3");
+                new Audio("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/" + levelType + "/" + currentLevel + "/" + i + ".mp3");
             }
         });
     }

@@ -96,7 +96,7 @@ public class Number_word_frag extends Fragment implements View.OnClickListener {
 
         i1 = (ImageView) view.findViewById(R.id.iDescribe2);
         try {
-            new Image(i1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(0)+".png");
+            new Image(i1).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+images.getInt(0)+".png");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -185,7 +185,7 @@ public class Number_word_frag extends Fragment implements View.OnClickListener {
                         dropTarget.setText(dropped.getText());
 
                         if(correct==2){
-                            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+                            new Audio("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/happy.mp3");
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.MAGENTA, Color.BLACK, Color.WHITE })
                                     .stream(3000l);
                             buttonthread = new ButtonThread(bReady);

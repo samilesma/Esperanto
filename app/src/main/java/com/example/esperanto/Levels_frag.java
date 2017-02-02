@@ -35,7 +35,7 @@ public class Levels_frag extends Fragment {
 
         String data="";
         try {
-            data = new Web().execute("http://quickconnect.dk/esperanto/metadata.json").get();
+            data = new Web().execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/metadata.json").get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

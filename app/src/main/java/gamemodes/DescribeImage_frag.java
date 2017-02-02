@@ -100,7 +100,7 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
 
 
         i1 = (ImageView) view.findViewById(R.id.iDescribe);
-        new Image(i1).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+(chooseWords+1)+".png");
+        new Image(i1).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+(chooseWords+1)+".png");
         bReady = (Button) view.findViewById(R.id.bReady);
         bReady.setOnClickListener(this);
         bReady.setVisibility(View.INVISIBLE);
@@ -170,7 +170,7 @@ public class DescribeImage_frag extends Fragment implements View.OnClickListener
                     //checking whether first character of dropTarget equals first character of dropped
                     if(dropTarget.getTag().toString().charAt(0) == dropped.getText().toString().charAt(0))
                     {
-                        new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+                        new Audio("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/happy.mp3");
                         CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.RED, Color.MAGENTA, Color.BLACK })
                                 .stream(3000l);
                         buttonthread = new ButtonThread(bReady);

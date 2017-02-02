@@ -62,7 +62,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
             ImageView imageDrag = (ImageView) view.findViewById(imagesDrag[i - 1]);
             ImageView imageDrop = (ImageView) view.findViewById(imagesDrop[i - 1]);
             text = (TextView) view.findViewById(texts[i-1]);
-            new Image(imageDrag).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
+            new Image(imageDrag).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+rand[i-1]+".png");
             imageDrag.setOnTouchListener(new ChoiceTouchListener());
             imageDrop.setOnDragListener(new ChoiceDragListener());
             imageDrag.setTag(rand[i-1]);
@@ -146,7 +146,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
                         {
                             correct++;
                             for(int i=1;i<=4;i++){
-                                if(dropped.getTag().toString().equals(""+i)) new Image((ImageView) v).execute("http://quickconnect.dk/esperanto/levels/"+levelType+"/"+currentLevel+"/"+i+".png");
+                                if(dropped.getTag().toString().equals(""+i)) new Image((ImageView) v).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/levels/"+levelType+"/"+currentLevel+"/"+i+".png");
                             }
                         }
                         //set the tag in the target view being dropped on - to the ID of the view being dropped
@@ -156,7 +156,7 @@ public class DragAnddrop_frag extends Fragment implements View.OnClickListener{
 
 
                         if(correct==4) {
-                            new Audio("http://quickconnect.dk/esperanto/happy.mp3");
+                            new Audio("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/happy.mp3");
                             CommonConfetti.rainingConfetti(container ,new int[] { Color.GREEN,Color.BLUE, Color.BLACK, Color.MAGENTA, Color.WHITE, Color.YELLOW })
                                     .stream(1500l);
                             buttonthread = new ButtonThread(bReady);

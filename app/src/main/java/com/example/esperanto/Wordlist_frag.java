@@ -97,8 +97,8 @@ public class Wordlist_frag extends Fragment {
             public void onClick(View v) {
                 String data="";
                 try {
-                    System.out.println("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json");
-                    data = new Web().execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/index.json").get();
+                    System.out.println("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/list/"+b.getText().toString()+"/index.json");
+                    data = new Web().execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/list/"+b.getText().toString()+"/index.json").get();
                     System.out.println(data);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -119,7 +119,7 @@ public class Wordlist_frag extends Fragment {
                 for(int i=1; i<=arr.length(); i++) {
                     try {
                         ImageView img = new ImageView(getActivity());
-                        new Image(img).execute("http://quickconnect.dk/esperanto/list/"+b.getText().toString()+"/"+arr.get(i-1).toString().toLowerCase()+".png").get();
+                        new Image(img).execute("https://raw.githubusercontent.com/samilesma/Esperanto/master/serverfiler/v1/list/"+b.getText().toString()+"/"+arr.get(i-1).toString().toLowerCase()+".png").get();
                         images.addView(img);
                         Display display = getActivity().getWindowManager().getDefaultDisplay();
                         int width = display.getWidth(); // ((display.getWidth()*20)/100)
